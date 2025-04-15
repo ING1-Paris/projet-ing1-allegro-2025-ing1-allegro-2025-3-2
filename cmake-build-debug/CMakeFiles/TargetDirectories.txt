@@ -1,0 +1,3 @@
+C:/Users/galti/CLionProjects/ ece type/cmake-build-debug/CMakeFiles/_ece_type.dir
+C:/Users/galti/CLionProjects/ ece type/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/galti/CLionProjects/ ece type/cmake-build-debug/CMakeFiles/rebuild_cache.dir
