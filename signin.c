@@ -1,6 +1,7 @@
 
 // Created by galti on 16/04/2025.
 #include <stdio.h>
+#include <allegro.h>
 #include "signin.h"
 int signin(t_joueur *joueur)
 {
