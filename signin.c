@@ -34,6 +34,17 @@ int signin(t_joueur *joueur)
         else
         {
             // On vérifie si le joueur a cliqué au mauvais endroit
+            printf("Ce pseudo existes deja.\n");
+            printf("Est-ce vous ?\n");
+            if (key[KEY_ENTER] == 1)
+            {
+                //On redirige le joueur vers login
+                login(joueur);
+            }
+            else {
+                // Le joueur doit choisir un nouveau pseudo
+                signin(joueur);
+            }
         }
     }
     return 0;

@@ -16,4 +16,5 @@ typedef struct joueur{
 int signin(t_joueur *joueur);
 int charge_pseudo(t_joueur *joueur);
 int charge_mdp(t_joueur *joueur);
+int login(t_joueur *joueur);
 #endif //SIGNIN_H
