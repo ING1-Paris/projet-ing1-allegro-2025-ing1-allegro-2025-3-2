@@ -7,6 +7,7 @@
 #include "signin.h"
 int charge_pseudo(t_joueur *joueur){
   /*ON VERIFIE SI LE PSEUDO EXISTES*/
+  /*DEFINITION DES VARIABLES*/
   //Si oui, on ne fait rien
   // Si non, on l'ajoutes à la liste des pseudos
 
