@@ -11,7 +11,8 @@ int signin(t_joueur *joueur)
     int couleur_texte = makecol(255,255,255);
     int x = 250; // abscisses de début du texte
     int y = 250; // ordonnées du début du texte
-    // PSEUDO
+
+
     textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo [1-20 caracteres]:\n");
     scanf("%s", joueur->user);
     if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
