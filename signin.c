@@ -13,7 +13,8 @@ int signin(t_joueur *joueur)
         printf("pseudo invalide.\n");
     }
     //On vérifie si le pseudo existes déjà
-    else {
+    else
+    {
         // Le pseudo n'existes pas
         if(joueur->user != '\0' && joueur->user != charge_pseudo(joueur))
         {
