@@ -30,6 +30,8 @@ int signin(t_joueur *joueur)
                 charge_mdp(joueur);
                 printf("Votre mot de passe a ete enregistre.\n");
             }
+            //On redirige le joueur vers login
+            login(joueur);
         }
         // Le pseudo existes déjà
         else
