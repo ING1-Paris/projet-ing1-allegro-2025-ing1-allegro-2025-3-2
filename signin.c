@@ -1,6 +1,5 @@
-//
+
 // Created by galti on 16/04/2025.
-//
 #include <stdio.h>
 #include "signin.h"
 int signin(t_joueur *joueur)
