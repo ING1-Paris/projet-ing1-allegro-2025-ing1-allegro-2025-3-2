@@ -16,9 +16,8 @@ int signin(t_joueur *joueur)
         // Le pseudo n'existes pas
         if(joueur->user != '\0' && joueur->user != charge_pseudo(joueur))
         {
-            printf("Votre pseudo est enregistre.\n");
             charge_pseudo(joueur);
-            printf("Choisissez un mot de passe.\n");
+            printf("Votre pseudo est enregistre. Choisissez a present un mot de passe.\n");
             scanf("%c", joueur->mdp);
             if (joueur->mdp <1 || joueur->mdp >12)
             {

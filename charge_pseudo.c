@@ -3,9 +3,12 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>0
+#include <string.h>
 #include "signin.h"
 int charge_pseudo(t_joueur *joueur){
+  /*ON VERIFIE SI LE PSEUDO EXISTES*/
+  //Si oui, on ne fait rien
+  // Si non, on l'ajoutes à la liste des pseudos
 
   return 0;
 }
