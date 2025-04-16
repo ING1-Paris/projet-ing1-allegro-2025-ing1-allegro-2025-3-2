@@ -12,7 +12,7 @@ int signin(t_joueur *joueur)
     int x = 250; // abscisses de début du texte
     int y = 250; // ordonnées du début du texte
     // PSEUDO
-    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo:\n");
+    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo [1-20 caracteres]:\n");
     scanf("%s", joueur->user);
     if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
     {
@@ -26,7 +26,7 @@ int signin(t_joueur *joueur)
         if(strcmp(joueur->user,charge_pseudo(joueur)) !=0)
         {
             charge_pseudo(joueur);
-            textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe.\n");
+            textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe.[1-12 caracteres]\n");
             scanf("%s", joueur->mdp);
             if (strlen(joueur->mdp) <1 || strlen(joueur->mdp) >12)
             {
@@ -45,8 +45,7 @@ int signin(t_joueur *joueur)
         else
         {
             // On vérifie si le joueur a cliqué au mauvais endroit
-            textprintf_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja.\n");
-            textprintf_ex(screen,font,x,y,couleur_texte,-1,"Est-ce vous ?\n");
+            textprintf_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?\n");
             if (key[KEY_ENTER] == 1)
             {
                 //On redirige le joueur vers login
