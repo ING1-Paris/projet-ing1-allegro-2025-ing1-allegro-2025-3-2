@@ -15,6 +15,9 @@ int signin(t_joueur *joueur)
 
     textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo [1-20 caracteres]:\n");
     scanf("%s", joueur->user);
+	// On efface le premier message
+    //rectfill(screen, x, y, x + text_length(font, "Choisissez un pseudo [1-20 caracteres]:\n"), y + text_height(font), makecol(0, 0, 0));
+
     if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
     {
         textprintf_ex(screen,font,x,y,couleur_texte,-1,"pseudo invalide.\n");
