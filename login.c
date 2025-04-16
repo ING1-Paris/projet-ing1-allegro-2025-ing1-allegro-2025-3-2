@@ -7,15 +7,19 @@ int login(t_joueur *joueur)
 {
   /*DEFINITION DES VARIABLES*/
   int essai =0;
+  /*DEFINITION DES VARIABLES*/
+  int couleur_texte = makecol(255,255,255);
+  int x = 250; // abscisses de début du texte
+  int y = 250; // ordonnées du début du texte
 
   for(essai=0;essai<3;essai++)
   {
-    printf("Saisissez votre nom d'utilisateur:\n");
+    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
     scanf("%s", joueur->user);
     if(strcmp(joueur->user,lecture_pseudo(joueur))==0)
     {
       //Pseudo invalide
-      printf("Votre nom d'utilisateur n'existes pas.\n");
+      textprintf_ex(screen,font,x,y,couleur_texte,-1,"Votre nom d'utilisateur n'existes pas.\n");
       essai = essai - 1;
     }
     else
