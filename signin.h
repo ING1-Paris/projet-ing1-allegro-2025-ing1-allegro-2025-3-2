@@ -4,6 +4,8 @@
 
 #ifndef SIGNIN_H
 #define SIGNIN_H
+#define LONGUEUR_MAX_PSEUDO 21
+#define NOMBRE_MAX_PSEUDOS 100
 /*STRUCTURE DES INFORMATIONS ASSOCIEES AU JOUEUR*/
 typedef struct joueur{
     char user;
