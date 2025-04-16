@@ -8,27 +8,32 @@ int signin(t_joueur *joueur)
     scanf("%c", joueur->user);
     if (joueur->user < 1 || joueur->user > 20)
     {
-        printf("Votre pseudo n'a pas le nombre de caracteres requis.\n");
+        printf("pseudo invalide.\n");
     }
     //On vérifie si le pseudo existes déjà
-    // Le pseudo n'existes pas
-    if(joueur->user != '\0' && joueur->user != charge_pseudo(joueur))
-    {
-        printf("Votre pseudo est enregistre.\n");
-        charge_pseudo(joueur);
-        printf("Choisissez un mot de passe.\n");
-        scanf("%c", joueur->mdp);
-        if (joueur->mdp <1 && joueur->mdp >12)
+    else {
+        // Le pseudo n'existes pas
+        if(joueur->user != '\0' && joueur->user != charge_pseudo(joueur))
         {
-            printf("Votre mot de passe n'est pas valide.\n");
+            printf("Votre pseudo est enregistre.\n");
+            charge_pseudo(joueur);
+            printf("Choisissez un mot de passe.\n");
+            scanf("%c", joueur->mdp);
+            if (joueur->mdp <1 || joueur->mdp >12)
+            {
+                printf("mot de passe invalide.\n");
+            }
+            else
+            {
+                charge_mdp(joueur);
+                printf("Votre mot de passe a ete enregistre.\n");
+            }
         }
+        // Le pseudo existes déjà
         else
         {
-            charge_mdp(joueur);
-            printf("Votre mot de passe a ete enregistre.\n");
+            // On vérifie si le joueur a cliqué au mauvais endroit
         }
-
     }
-    // Le pseudo existes déjà
  return 0;
 }
