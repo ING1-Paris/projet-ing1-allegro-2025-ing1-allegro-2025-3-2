@@ -8,8 +8,8 @@
 #define NOMBRE_MAX_PSEUDOS 100
 /*STRUCTURE DES INFORMATIONS ASSOCIEES AU JOUEUR*/
 typedef struct joueur{
-    char user;
-    char mdp;
+    char user[20];
+    char mdp[12];
 }t_joueur;
 
 /* PROTOTYPES DES FONCTIONS DE CONNEXION*/

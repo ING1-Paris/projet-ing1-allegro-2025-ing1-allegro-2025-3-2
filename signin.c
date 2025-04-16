@@ -7,12 +7,17 @@
 //Je dois encore le modifier pour que tout s'affiche sur la fenêtre du jeu
 int signin(t_joueur *joueur)
 {
+    /*DEFINITION DES VARIABLES*/
+    int couleur_texte = makecol(255,255,255);
+    int x = 250; // abscisses de début du texte
+    int y = 250; // ordonnées du début du texte
     // PSEUDO
-    printf("Choisissez un pseudo:\n");
-    scanf("%c", joueur->user);
-    if (joueur->user < 1 || joueur->user > 20)
+    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo:\n");
+    scanf("%s", joueur->user);
+    if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
     {
-        printf("pseudo invalide.\n");
+        textprintf_ex(screen,font,x,y,couleur_texte,-1,"pseudo invalide.\n");
+        return 0;
     }
     //On vérifie si le pseudo existes déjà
     else
@@ -21,16 +26,17 @@ int signin(t_joueur *joueur)
         if(joueur->user != '\0' && joueur->user != charge_pseudo(joueur))
         {
             charge_pseudo(joueur);
-            printf("Votre pseudo est enregistre. Choisissez a present un mot de passe.\n");
-            scanf("%c", joueur->mdp);
-            if (joueur->mdp <1 || joueur->mdp >12)
+            textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe.\n");
+            scanf("%s", joueur->mdp);
+            if (strlen(joueur->mdp) <1 || strlen(joueur->mdp) >12)
             {
-                printf("mot de passe invalide.\n");
+                textprintf_ex(screen, font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
+                return 0;
             }
             else
             {
                 charge_mdp(joueur);
-                printf("Votre mot de passe a ete enregistre.\n");
+                textprintf_ex(screen,font,x,y,couleur_texte,-1,"Votre mot de passe a ete enregistre.\n");
             }
             //On redirige le joueur vers login
             login(joueur);
@@ -39,8 +45,8 @@ int signin(t_joueur *joueur)
         else
         {
             // On vérifie si le joueur a cliqué au mauvais endroit
-            printf("Ce pseudo existes deja.\n");
-            printf("Est-ce vous ?\n");
+            textprintf_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja.\n");
+            textprintf_ex(screen,font,x,y,couleur_texte,-1,"Est-ce vous ?\n");
             if (key[KEY_ENTER] == 1)
             {
                 //On redirige le joueur vers login
@@ -49,7 +55,7 @@ int signin(t_joueur *joueur)
             else
             {
                 // Le joueur doit choisir un nouveau pseudo
-                signin(joueur);
+                return signin(joueur);
             }
         }
     }
