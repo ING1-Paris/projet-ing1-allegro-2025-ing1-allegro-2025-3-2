@@ -4,10 +4,12 @@
 #define SIGNIN_H
 /*STRUCTURE DES INFORMATIONS ASSOCIEES AU JOUEUR*/
 typedef struct joueur{
-char user[20];
-char mdp[12];
+char user;
+char mdp;
 }t_joueur;
 
 /* PROTOTYPES DES FONCTIONS DE CONNEXION*/
 int signin(t_joueur *joueur);
+int charge_pseudo(t_joueur *joueur);
+int charge_mdp(t_joueur *joueur);
 #endif //SIGNIN_H
