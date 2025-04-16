@@ -41,7 +41,8 @@ int signin(t_joueur *joueur)
                 //On redirige le joueur vers login
                 login(joueur);
             }
-            else {
+            else
+            {
                 // Le joueur doit choisir un nouveau pseudo
                 signin(joueur);
             }
