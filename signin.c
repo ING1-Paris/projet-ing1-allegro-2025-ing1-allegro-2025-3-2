@@ -23,7 +23,7 @@ int signin(t_joueur *joueur)
     else
     {
         // Le pseudo n'existes pas
-        if(joueur->user != '\0' && joueur->user != charge_pseudo(joueur))
+        if(strcmp(joueur->user,charge_pseudo(joueur)) !=0)
         {
             charge_pseudo(joueur);
             textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe.\n");
