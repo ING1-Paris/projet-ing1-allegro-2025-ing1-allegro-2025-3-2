@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <allegro.h>
 #include "signin.h"
+// Pour l'instant, le signin fonctionne sur la console
+//Je dois encore le modifier pour que tout s'affiche sur la fenêtre du jeu
 int signin(t_joueur *joueur)
 {
     // PSEUDO
