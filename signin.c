@@ -6,7 +6,7 @@ int signin(t_joueur *joueur)
     // PSEUDO
     printf("Choisissez un pseudo:\n");
     scanf("%c", joueur->user);
-    if (*joueur->user < 1 || joueur->user > 20){
+    if (*joueur->user < 1 || *joueur->user > 20){
       printf("Votre pseudo n'a pas le nombre de caracteres requis.\n");
     }
     else{         
