@@ -24,26 +24,25 @@ int login(t_joueur *joueur)
     }
     else
     {
-      printf("Vous pouvez saisir votre mot de passe.\n");
-      printf("Saisissez votre mot de passe:\n");
+      textprintf_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
       scanf("%c", joueur->mdp);
       for(essai=0;essai<3;essai++)
       {
         if(strcmp(joueur->user,lecture_mdp(joueur))==0)
         {
-          printf("Votre mot de passe est invalide.\n");
+          textprintf_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
           essai = essai - 1;
         }
         else
         {
-          printf("connexion reussie.\n");
+          textprintf_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
           // renvoie vers page de jeu (niveaux)
         }
       }
-      printf("Vous n'avez plus d'essais disponibles.\n");
+      textprintf_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
       return 0;
     }
   }
-  printf("Vous n'avez plus d'essais disponibles.\n");
+  textprintf_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
   return 0;
 }
