@@ -98,6 +98,11 @@ int login(t_joueur *joueur,BITMAP *background)
       }
     }
     textprintf_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
+    rest(30000); // 30 secondes
+    //On efface le message précédent
+    effacer_texte(joueur,background);
+    //On retourne au début du programme
+    login(joueur,background);
   }
   return 0;
 }
