@@ -7,6 +7,7 @@ int login(t_joueur *joueur,BITMAP *background)
 {
   /*DEFINITION DES VARIABLES*/
   int essai =0;
+  char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
   /*DEFINITION DES VARIABLES*/
   int couleur_texte = makecol(255,255,255);
   int x = SCREEN_W/2; // abscisses de début du texte
@@ -22,8 +23,11 @@ int login(t_joueur *joueur,BITMAP *background)
       {
         //Le joueur a validé son choix : on efface le texte précédent
         effacer_texte(joueur,background);
-        //On vérifie le pseudo et le mot de passe
-        return 0;
+        //On vérifie le pseudo
+        if (ustrstr(joueur->user,pseudos)!= NULL) {
+          //Le pseudo existes.
+          return 0;
+        }
       }
       default:
       {
@@ -62,7 +66,7 @@ int login(t_joueur *joueur,BITMAP *background)
           //On efface le texte précédent
           effacer_texte(joueur,background);
           /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
-          if (strcmp(joueur->mdp,lecture_mdp) != 0)
+          if (strcmp(joueur->mdp,lecture_joueur) != 0)
           {
             // Le mot de passe est invalide
             textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
