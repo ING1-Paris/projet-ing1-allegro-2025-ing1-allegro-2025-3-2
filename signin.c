@@ -20,8 +20,7 @@ int signin(t_joueur *joueur,BITMAP*background)
         /* VALIDATION DU PSEUDO*/
         case KEY_ENTER:
         {
-            // Le joueur a validé son choix
-            // On efface le texte précédent
+            // Le joueur a validé son choix : on efface le texte précédent
             effacer_texte(joueur,background);
             //On vérifie la taille du pseudo
             if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
