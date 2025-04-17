@@ -43,7 +43,7 @@ int login(t_joueur *joueur,BITMAP *background)
       else
       {
         // Pseudo valide : on sort de la boucle for
-        return 0;
+        return essai;
       }
     }
   }
