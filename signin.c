@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <allegro.h>
 #include "signin.h"
-
+/* FAIRE UN FICHIER COMMUN POUR USER ET MDP !!!*/
 int signin(t_joueur *joueur,BITMAP*background)
 {
     /*DEFINITION DES VARIABLES ALLEGRO*/
