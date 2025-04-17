@@ -18,8 +18,7 @@ int login(t_joueur *joueur,BITMAP *background)
     switch (readkey()>>8)
     {
       case KEY_ENTER: {
-        //Le joueur a validé son choix
-        // On efface le texte précédent
+        //Le joueur a validé son choix : on efface le texte précédent
         effacer_texte(joueur,background);
         //On vérifie le pseudo et le mot de passe
       }
