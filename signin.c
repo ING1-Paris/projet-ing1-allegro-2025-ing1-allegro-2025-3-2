@@ -3,11 +3,10 @@
 #include <stdio.h>
 #include <allegro.h>
 #include "signin.h"
-// Pour l'instant, le signin fonctionne sur la console
-//Je dois encore le modifier pour que tout s'affiche sur la fenêtre du jeu
-int signin(t_joueur *joueur)
+
+int signin(t_joueur *joueur,BITMAP*background)
 {
-    /*DEFINITION DES VARIABLES*/
+    /*DEFINITION DES VARIABLES ALLEGRO*/
     int couleur_texte = makecol(255,255,255);
     int x = 250; // abscisses de début du texte
     int y = 250; // ordonnées du début du texte
@@ -15,8 +14,10 @@ int signin(t_joueur *joueur)
 
     textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo [1-20 caracteres]:\n");
     scanf("%s", joueur->user);
-	// On efface le premier message
-    //rectfill(screen, x, y, x + text_length(font, "Choisissez un pseudo [1-20 caracteres]:\n"), y + text_height(font), makecol(0, 0, 0));
+    // Effacer la zone du texte en restaurant la partie du fond correspondant
+    int largeur_zone = 400;
+    int hauteur_zone = text_height(font);
+    blit(background, screen, x, y, x, y, largeur_zone, hauteur_zone);
 
     if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
     {

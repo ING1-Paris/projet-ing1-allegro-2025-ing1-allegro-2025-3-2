@@ -11,7 +11,7 @@ typedef struct joueur{
 }t_joueur;
 
 /* PROTOTYPES DES FONCTIONS DE CONNEXION*/
-int signin(t_joueur *joueur);
+int signin(t_joueur *joueur,BITMAP*background);
 int charge_pseudo(t_joueur *joueur);
 int charge_mdp(t_joueur *joueur);
 int login(t_joueur *joueur);
