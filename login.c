@@ -9,8 +9,8 @@ int login(t_joueur *joueur,BITMAP *background)
   int essai =0;
   /*DEFINITION DES VARIABLES*/
   int couleur_texte = makecol(255,255,255);
-  int x = 250; // abscisses de début du texte
-  int y = 250; // ordonnées du début du texte
+  int x = SCREEN_W/2; // abscisses de début du texte
+  int y = SCREEN_H/2; // ordonnées du début du texte
 
   for(essai=0;essai<3;essai++)
   {
