@@ -60,8 +60,6 @@ char verifie_pseudo(t_joueur *joueur)
 char charge_joueur(t_joueur *joueur)
 {
 
-  /* ENREGISTREMENT DU PSEUDO*/
-
   FILE* AjoutJoueur = fopen("./donnees_sauvegardees/joueur.txt", "a"); // Ouverture du fichier pseudos.txt en mode ajout
   if (AjoutJoueur == NULL) { // Erreur d'ouverture de fichier
     printf("Erreur d'ouverture de fichier\n");
