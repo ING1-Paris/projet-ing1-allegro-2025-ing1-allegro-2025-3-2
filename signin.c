@@ -15,7 +15,7 @@ int signin(t_joueur *joueur,BITMAP*background)
 
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
     //Equivalent du scanf mais en allegro
-    ecrire_texte(joueur);
+    ecrire_texte(joueur); // s'occupe de la saisie du pseudo, en respectant la limite de caractères
     switch (readkey() >> 8)
     {
         /* VALIDATION DU PSEUDO*/
@@ -23,44 +23,30 @@ int signin(t_joueur *joueur,BITMAP*background)
         {
             // Le joueur a validé son choix : on efface le texte précédent
             effacer_texte(joueur,background);
-            //On vérifie la taille du pseudo
-            if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
-            {
-                textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"pseudo invalide.\n");
-                rest(10000); // 10 secondes
-                // On efface le texte précédent
-                effacer_texte(joueur,background);
-                // On revient au début du programme
-                signin(joueur,background);
-                return 0;
-            }
             // le pseudo est valide : on vérifie s'il est déjà utilisé
-            else
+            // Le pseudo existes déjà
+            if(strcmp(joueur->user,verifie_pseudo) ==0)
             {
-                // Le pseudo existes déjà
-                if(strcmp(joueur->user,verifie_pseudo) ==0)
+                textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
+                switch (readkey()>> 8)
                 {
-                    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
-                    switch (readkey()>> 8)
+                    case KEY_ENTER:
                     {
-                        case KEY_ENTER:
-                        {
-                            //C'est bien lui : on le rediriges vers le menu principal
-                            break;
-                        }
-                        default:
-                        {
-                            // Le joueur doit choisir un nouveau pseudo
-                            signin(joueur,background);
-                            break;
-                        }
+                        //C'est bien lui : on le rediriges vers le menu principal
+                        break;
+                    }
+                    default:
+                    {
+                        // Le joueur doit choisir un nouveau pseudo
+                        signin(joueur,background);
+                        break;
                     }
                 }
-                else
-                {
-                    //Le pseudo n'existes pas : on peut sortir de la boucle pour choisir le mdp
-                    return 0;
-                }
+            }
+            else
+            {
+                //Le pseudo n'existes pas : on peut sortir de la boucle pour choisir le mdp
+                return 0;
             }
         }
         default:
@@ -78,28 +64,13 @@ int signin(t_joueur *joueur,BITMAP*background)
     {
         case KEY_ENTER:
         {
-            /* VERIFICATION DE LA TAILLE DU MOT DE PASSE*/
-            if (strlen(joueur->mdp) < 1 || strlen(joueur->mdp) > 12)
-            {
-                textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
-                rest(10000); // 10 secondes
-                // On efface le texte précédent
-                effacer_texte(joueur,background);
-                // On revient au début du programme
-                signin(joueur,background);
-                return 0;
-            }
-            else
-            {
-                //On peut enregistrer le pseudo & le mot de passe
-                charge_joueur(joueur);
-                textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
-                rest(10000); // 10 secondes
-                effacer_texte(joueur,background);
-                // On revient au menu principal
-                return 0;
-            }
-        break;
+            //On peut enregistrer le pseudo & le mot de passe
+            charge_joueur(joueur);
+            textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
+            rest(10000); // 10 secondes
+            effacer_texte(joueur,background);
+            // On revient au menu principal
+            break;
         }
         default:
         {
@@ -108,5 +79,4 @@ int signin(t_joueur *joueur,BITMAP*background)
             break;
         }
     }
-    return 0;
 }
