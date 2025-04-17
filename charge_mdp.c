@@ -9,15 +9,15 @@ char charge_mdp(t_joueur *joueur)
 
     /* ENREGISTREMENT DU MOT DE PASSE*/
 
-    FILE* AjoutPseudo = fopen("./donnees_sauvegardees/pseudos.txt", "a"); // Ouverture du fichier pseudos.txt en mode ajout
-    if (AjoutPseudo == NULL) { // Erreur d'ouverture de fichier
+    FILE* AjoutMdp = fopen("./donnees_sauvegardees/mdp.txt", "a"); // Ouverture du fichier pseudos.txt en mode ajout
+    if (AjoutMdp == NULL) { // Erreur d'ouverture de fichier
         printf("Erreur d'ouverture de fichier\n");
         exit(1);
     }
-    fprintf(AjoutPseudo, "%s", joueur->user);
-    printf("Votre pseudo \"%s\" a ete sauvegarde.\n", joueur->user);
-    fclose(AjoutPseudo);
-    AjoutPseudo = NULL;
+    fprintf(AjoutMdp, "%s", joueur->mdp);
+    printf("Votre mot de passe \"%s\" a ete sauvegarde.\n", joueur->mdp);
+    fclose(AjoutMdp);
+    AjoutMdp = NULL;
 
     return 0;
 }
