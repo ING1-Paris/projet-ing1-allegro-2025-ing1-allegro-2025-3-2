@@ -3,6 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "signin.h"
-int lecture_pseudo(t_joueur *joueur) {
+int lecture_joueur(t_joueur *joueur) {
     return 0;
 }
