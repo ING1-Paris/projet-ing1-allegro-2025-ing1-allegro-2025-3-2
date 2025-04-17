@@ -12,10 +12,16 @@ typedef struct joueur{
 
 /* PROTOTYPES DES FONCTIONS DE CONNEXION*/
 int signin(t_joueur *joueur,BITMAP*background);
+int login(t_joueur *joueur,BITMAP*background);
+
+/* PROTOTYPES DES FONCTIONS D'ECRITURE*/
 char charge_pseudo(t_joueur *joueur);
 int charge_mdp(t_joueur *joueur);
-int login(t_joueur *joueur,BITMAP*background);
+
+/* PROTOTYPES DES FONCTIONS DE LECTURE*/
 int lecture_pseudo(t_joueur *joueur);
 int lecture_mdp(t_joueur *joueur);
+
+/* PROTOTYPES DE LA FONCTION QUI EFFACES LE TEXTE*/
 void effacer_texte(t_joueur *joueur,BITMAP*background);
 #endif //SIGNIN_H
