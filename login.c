@@ -78,7 +78,7 @@ int login(t_joueur *joueur,BITMAP *background)
         //On efface le texte précédent
         effacer_texte(joueur,background);
         /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
-        if (strcmp(joueur->mdp,lecture_mdp(joueur)) != 0)
+        if (strcmp(joueur->mdp,lecture_mdp) != 0)
         {
           // Le mot de passe est invalide
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
