@@ -7,7 +7,7 @@
 char charge_mdp(t_joueur *joueur)
 {
 
-    /* ENREGISTREMENT DU PSEUDO*/
+    /* ENREGISTREMENT DU MOT DE PASSE*/
 
     FILE* AjoutPseudo = fopen("./donnees_sauvegardees/pseudos.txt", "a"); // Ouverture du fichier pseudos.txt en mode ajout
     if (AjoutPseudo == NULL) { // Erreur d'ouverture de fichier
