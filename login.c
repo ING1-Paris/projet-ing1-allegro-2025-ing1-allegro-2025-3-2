@@ -14,7 +14,8 @@ int login(t_joueur *joueur,BITMAP *background)
 
   for(essai=0;essai<3;essai++) {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
-    scanf("%s", joueur->user);
+    //Equivalent du scanf mais en allegro
+    ecrire_texte(joueur); // s'occupe de la saisie du pseudo, en respectant la limite de caractères
     switch (readkey()>>8)
     {
       case KEY_ENTER: {
@@ -50,7 +51,8 @@ int login(t_joueur *joueur,BITMAP *background)
     for (essai=0;essai<3;essai++)
     {
       textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
-      scanf("%s", joueur->mdp);
+      //Equivalent du scanf mais en allegro
+      ecrire_texte(joueur); // s'occupe de la saisie du mot de passe, en respectant la limite de caractères
       switch (readkey()>>8)
       {
         case KEY_ENTER:
