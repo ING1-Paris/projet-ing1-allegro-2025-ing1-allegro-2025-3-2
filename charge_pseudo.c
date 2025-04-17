@@ -62,15 +62,14 @@ char charge_joueur(t_joueur *joueur)
 
   /* ENREGISTREMENT DU PSEUDO*/
 
-  FILE* AjoutPseudo = fopen("./donnees_sauvegardees/pseudos.txt", "a"); // Ouverture du fichier pseudos.txt en mode ajout
-  if (AjoutPseudo == NULL) { // Erreur d'ouverture de fichier
+  FILE* AjoutJoueur = fopen("./donnees_sauvegardees/joueur.txt", "a"); // Ouverture du fichier pseudos.txt en mode ajout
+  if (AjoutJoueur == NULL) { // Erreur d'ouverture de fichier
     printf("Erreur d'ouverture de fichier\n");
     exit(1);
   }
-  fprintf(AjoutPseudo, "%s", joueur->user);
-  printf("Votre pseudo \"%s\" a ete sauvegarde.\n", joueur->user);
-  fclose(AjoutPseudo);
-  AjoutPseudo = NULL;
+  fprintf(AjoutJoueur, "%s %s", joueur->user,joueur->mdp);
+  fclose(AjoutJoueur);
+  AjoutJoueur = NULL;
 
   return 0;
 }
