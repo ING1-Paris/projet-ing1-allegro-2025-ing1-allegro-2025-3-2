@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <allegro.h>
 #include "signin.h"
-/* FAIRE UN FICHIER COMMUN POUR USER ET MDP !!!*/
+
 int signin(t_joueur *joueur,BITMAP*background)
 {
     /*DEFINITION DES VARIABLES ALLEGRO*/
@@ -14,7 +14,7 @@ int signin(t_joueur *joueur,BITMAP*background)
 	/* CHOIX DU PSEUDO */
 
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
-    scanf("%s", joueur->user);
+    scanf("%s", joueur->user); // Ou utiliser une version uniquement allegro...
     switch (readkey() >> 8)
     {
         /* VALIDATION DU PSEUDO*/
