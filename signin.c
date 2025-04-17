@@ -18,13 +18,13 @@ int signin(t_joueur *joueur,BITMAP*background)
     scanf("%s", joueur->user);
 
 	/* VALIDATION DU PSEUDO*/
-    if (key[KEY_ENTER] == 0)
+    if (keypressed() && key[KEY_ENTER] == 0)
     {
         // Le joueur n'a pas validé son choix : On le redirige vers le début du programme
         signin(joueur,background);
         return 0;
     }
-    else // le joueur a validé son choix
+    if(keypressed() && key[KEY_ENTER] == 1) // le joueur a validé son choix
     {
         // On efface le texte précédent
         effacer_texte(joueur,background);
@@ -45,13 +45,13 @@ int signin(t_joueur *joueur,BITMAP*background)
             // Le pseudo existes déjà
             if(strcmp(joueur->user,charge_pseudo(joueur)) ==0) {
                 textprintf_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
-                if (key[KEY_ENTER] == 0)
+                if (keypressed() && key[KEY_ENTER] == 0)
                 {
                     // Le joueur doit choisir un nouveau pseudo
                     signin(joueur,background);
                     return 0;
                 }
-                else
+                if (keypressed() && key[KEY_ENTER] == 1)
                 {
                     // C'est lui : on le redirige vers le menu principal(->login)
                     return 0;
@@ -64,12 +64,12 @@ int signin(t_joueur *joueur,BITMAP*background)
                 textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
                 scanf("%s", joueur->mdp);
                 /* VALIDATION DU MOT DE PASSE*/
-                if (key[KEY_ENTER] == 0)
+                if (keypressed() && key[KEY_ENTER] == 0)
                 {
                     // Le joueur n'a pas validé son choix : on le rediriges vers le début du programme
                     signin(joueur,background);
                 }
-                else
+                if (keypressed() && key[KEY_ENTER] == 1)
                 {
                     /* VERIFICATION DE LA TAILLE DU MOT DE PASSE */
                     if (strlen(joueur->mdp) <1 || strlen(joueur->mdp) >12)
