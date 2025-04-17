@@ -22,6 +22,6 @@ void effacer_texte(t_joueur *joueur,BITMAP*background){
     {
         //Le joueur a appuyé sur une mauvaise touche/n'a pas appuyé du tout
         //On le redirige ves le début de la fonction
-        return signin(joueur);
+        signin(joueur,background);
     }
 }
