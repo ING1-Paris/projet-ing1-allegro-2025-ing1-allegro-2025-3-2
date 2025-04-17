@@ -57,7 +57,7 @@ char verifie_pseudo(t_joueur *joueur)
 }
 
 
-char charge_pseudo(t_joueur *joueur)
+char charge_joueur(t_joueur *joueur)
 {
 
   /* ENREGISTREMENT DU PSEUDO*/
