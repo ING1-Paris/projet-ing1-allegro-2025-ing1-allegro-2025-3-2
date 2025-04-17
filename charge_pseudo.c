@@ -10,18 +10,16 @@ char verifie_pseudo(t_joueur *joueur)
 {
   /*DEFINITION DES VARIABLES*/
   char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
-  int numero = 0;
-  int comparer = 0;
   int i=0;
 
   /* OUVERTURE DU FICHIER EN MODE LECTURE*/
-  FILE* Pseudos = fopen("./donnees_sauvegardees/joueur.txt", "r");
-  if (Pseudos == NULL)
+  FILE* Joueurs = fopen("./donnees_sauvegardees/joueur.txt", "r");
+  if (Joueurs == NULL)
   { // Erreur d'ouverture de fichier
     printf("Erreur d'ouverture de fichier");
     exit(1);
   }
-  while (fscanf(Pseudos, "%s %s", joueur->user,joueur->mdp) != EOF) {
+  while (fscanf(Joueurs, "%s %s", joueur->user,joueur->mdp) != EOF) {
     // Tant que la liste n'est pas finie, on compare le pseudo & le mdp donné avec la liste
     if (joueur->user == pseudos[i] && joueur->mdp == pseudos[i])
     {
@@ -33,8 +31,8 @@ char verifie_pseudo(t_joueur *joueur)
       i++;
     }
   }
-  fclose(Pseudos);
-  Pseudos = NULL;
+  fclose(Joueurs);
+  Joueurs = NULL;
   return 0;
 }
 
