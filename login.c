@@ -31,7 +31,7 @@ int login(t_joueur *joueur,BITMAP *background)
 
       /* VERIFICATION DE L'EXISTENCE DU PSEUDO*/
 
-      if(strcmp(joueur->user,lecture_pseudo(joueur))!=0)
+      if(strcmp(joueur->user,lecture_pseudo)!=0)
       {
         //Pseudo invalide
         textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Votre nom d'utilisateur n'existes pas.\n");
