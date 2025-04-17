@@ -15,45 +15,27 @@ char verifie_pseudo(t_joueur *joueur)
   int i=0;
 
   /* OUVERTURE DU FICHIER EN MODE LECTURE*/
-  FILE* Pseudos = fopen("./donnees_sauvegardees/pseudos.txt", "r");
+  FILE* Pseudos = fopen("./donnees_sauvegardees/joueur.txt", "r");
   if (Pseudos == NULL)
   { // Erreur d'ouverture de fichier
     printf("Erreur d'ouverture de fichier");
     exit(1);
   }
-  /* COMPTABILISE LE NOMBRE DE PSEUDOS ENREGISTRES*/
-  while (fscanf(Pseudos, "%s", pseudos[numero]) == 1)
-  {
-    numero++;
-  }
-  printf("%d",numero); // ligne de vérification dans la console
-
-  /* VERIFICATION DE L'EXISTENCE DU PSEUDO*/
-  for (i = 0; i <= numero; i++)
-  { // On parcourt toutes les lignes
-    comparer = strcmp(pseudos[i], joueur->user); // Comparaison entre pseudos[i] et joueur-> user
-    if (comparer == 0)
+  while (fscanf(Pseudos, "%s %s", joueur->user,joueur->mdp) != EOF) {
+    // Tant que la liste n'est pas finie, on compare le pseudo & le mdp donné avec la liste
+    if (joueur->user == pseudos[i] && joueur->mdp == pseudos[i])
     {
-      i++; // On va à la ligne suivante
-    }
-    else // le pseudo ne fait pas partie de la liste des pseudos enregistrés
-    {
-      //On sort de la boucle for
+      //Le pseudo & son mot de passe associé font partie de la liste des pseudos enregistrés
       return 0;
     }
+    else
+    {
+      i++;
+    }
   }
-  if (i==numero)
-  {
-    printf("Le pseudo n'existes pas encore.");
-    return 1;
-  }
-  else
-  {
-    //On ferme le fichier
-    fclose(Pseudos);
-    Pseudos = NULL;
-    return 0;
-  }
+  fclose(Pseudos);
+  Pseudos = NULL;
+  return 0;
 }
 
 
