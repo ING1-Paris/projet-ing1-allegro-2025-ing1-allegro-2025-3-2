@@ -23,7 +23,7 @@ int signin(t_joueur *joueur,BITMAP*background)
             // Le joueur a validé son choix : on efface le texte précédent
             effacer_texte(joueur,background);
             // ustrstr trouve la première occurence de joueur->user dans pseudos
-            if(ustrstr(joueur->user,pseudos))
+            if(ustrstr(joueur->user,pseudos) != NULL)
             {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 switch (readkey()>> 8)
