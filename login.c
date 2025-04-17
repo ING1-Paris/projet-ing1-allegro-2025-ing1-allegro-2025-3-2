@@ -18,13 +18,15 @@ int login(t_joueur *joueur,BITMAP *background)
     ecrire_texte(joueur); // s'occupe de la saisie du pseudo, en respectant la limite de caractères
     switch (readkey()>>8)
     {
-      case KEY_ENTER: {
+      case KEY_ENTER:
+      {
         //Le joueur a validé son choix : on efface le texte précédent
         effacer_texte(joueur,background);
         //On vérifie le pseudo et le mot de passe
         return 0;
       }
-      default: {
+      default:
+      {
         //On efface le texte précédent
         effacer_texte(joueur,background);
         // Le joueur n'a pas validé son choix : il perd un essai
@@ -80,7 +82,8 @@ int login(t_joueur *joueur,BITMAP *background)
             return 0;
           }
         }
-        default: {
+        default:
+        {
           //On efface le texte précédent
           effacer_texte(joueur,background);
           // Le joueur n'a pas validé son choix : il perd un essai
