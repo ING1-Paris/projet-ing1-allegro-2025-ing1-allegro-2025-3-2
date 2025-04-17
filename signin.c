@@ -76,7 +76,7 @@ int signin(t_joueur *joueur,BITMAP*background)
                             }
                             else {
                                 //On peut enregistrer le pseudo & le mot de passe
-                                charger_joueur(joueur);
+                                charge_joueur(joueur);
                                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
                                 rest(10000); // 10 secondes
                                 effacer_texte(joueur,background);
