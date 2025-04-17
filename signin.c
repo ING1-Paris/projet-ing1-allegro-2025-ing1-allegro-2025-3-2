@@ -42,7 +42,7 @@ int signin(t_joueur *joueur,BITMAP*background)
         // Le pseudo choisi est valide : On vérifie s'il est déjà utilisé ou non
         else {
             // Le pseudo existes déjà
-            if(strcmp(joueur->user,verifie_pseudo(joueur)) ==0) {
+            if(strcmp(joueur->user,verifie_pseudo) ==0) {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 if (keypressed() && key[KEY_ENTER] == 0)
                 {
