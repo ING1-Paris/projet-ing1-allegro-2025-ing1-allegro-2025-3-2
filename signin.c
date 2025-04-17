@@ -13,7 +13,7 @@ int signin(t_joueur *joueur,BITMAP*background)
 
 	/* CHOIX DU PSEUDO */
 
-    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
+    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
     scanf("%s", joueur->user);
 
 	/* VALIDATION DU PSEUDO*/
@@ -31,7 +31,7 @@ int signin(t_joueur *joueur,BITMAP*background)
         /* VERIFICATION DE LA TAILLE DU PSEUDO*/
         if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
         {
-            textprintf_ex(screen,font,x,y,couleur_texte,-1,"pseudo invalide.\n");
+            textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"pseudo invalide.\n");
             rest(10000); // 10 secondes
             // On efface le texte précédent
             effacer_texte(joueur,background);
@@ -43,7 +43,7 @@ int signin(t_joueur *joueur,BITMAP*background)
         else {
             // Le pseudo existes déjà
             if(strcmp(joueur->user,charge_pseudo(joueur)) ==0) {
-                textprintf_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
+                textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 if (keypressed() && key[KEY_ENTER] == 0)
                 {
                     // Le joueur doit choisir un nouveau pseudo
@@ -60,7 +60,7 @@ int signin(t_joueur *joueur,BITMAP*background)
             {
                 // On enregistres le pseudo
                 charge_pseudo(joueur);
-                textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
+                textprintf_centre_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
                 scanf("%s", joueur->mdp);
                 /* VALIDATION DU MOT DE PASSE*/
                 if (keypressed() && key[KEY_ENTER] == 0)
@@ -73,7 +73,7 @@ int signin(t_joueur *joueur,BITMAP*background)
                     /* VERIFICATION DE LA TAILLE DU MOT DE PASSE */
                     if (strlen(joueur->mdp) <1 || strlen(joueur->mdp) >12)
                     {
-                        textprintf_ex(screen, font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
+                        textprintf_centre_ex(screen, font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
                         rest(10000); // 10 secondes
                         // On efface le texte précédent
                         effacer_texte(joueur,background);
@@ -84,7 +84,7 @@ int signin(t_joueur *joueur,BITMAP*background)
                     else
                     {
                         charge_mdp(joueur);
-                        textprintf_ex(screen,font,x,y,couleur_texte,-1,"Votre mot de passe a ete enregistre.\n");
+                        textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Votre mot de passe a ete enregistre.\n");
                         rest(10000); // 10 secondes
                         // On efface le texte
                         effacer_texte(joueur,background);
