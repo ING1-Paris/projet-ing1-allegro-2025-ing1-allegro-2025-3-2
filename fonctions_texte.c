@@ -18,4 +18,8 @@ void effacer_texte(t_joueur *joueur,BITMAP*background){
 void ecrire_texte(t_joueur *joueur) {
     // saisie + affichage du texte au fur et à mesure de la saisie
     // respecte la limite de caractères : entre 1 et 12-> mdp et entre 1 et 20 -> pseudo
+    // enregistre le pseudo final dans joueur->user et le mdp final dans joueur->mdp
+    //1) Boucle while qui lit avec readkey()
+    //2) Construit la chaîne caractère par caractère
+    //3) Affiche la chaîne en direct avec textout à chaque itération
 }
