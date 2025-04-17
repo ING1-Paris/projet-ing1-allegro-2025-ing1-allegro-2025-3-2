@@ -17,6 +17,7 @@ int login(t_joueur *joueur,BITMAP*background);
 /* PROTOTYPES DES FONCTIONS D'ECRITURE*/
 char charge_pseudo(t_joueur *joueur);
 int charge_mdp(t_joueur *joueur);
+char verifie_pseudo(t_joueur *joueur);
 
 /* PROTOTYPES DES FONCTIONS DE LECTURE*/
 int lecture_pseudo(t_joueur *joueur);
