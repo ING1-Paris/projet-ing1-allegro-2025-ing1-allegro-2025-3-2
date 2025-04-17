@@ -14,7 +14,7 @@ int login(t_joueur *joueur,BITMAP *background)
 
   for(essai=0;essai<3;essai++)
   {
-    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
+    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
     scanf("%s", joueur->user);
     if (keypressed() && key[KEY_ENTER] == 0)
     {
@@ -34,7 +34,7 @@ int login(t_joueur *joueur,BITMAP *background)
       if(strcmp(joueur->user,lecture_pseudo(joueur))!=0)
       {
         //Pseudo invalide
-        textprintf_ex(screen,font,x,y,couleur_texte,-1,"Votre nom d'utilisateur n'existes pas.\n");
+        textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Votre nom d'utilisateur n'existes pas.\n");
         rest(10000); // 10 secondes
         //On efface le message précédent
         effacer_texte(joueur,background);
@@ -47,13 +47,13 @@ int login(t_joueur *joueur,BITMAP *background)
       }
     }
   }
-  textprintf_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
+  textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
 
   if (essai == 3)
   {
     // On efface le message précédent
     effacer_texte(joueur,background);
-    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
+    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
     rest(30000); // On attend 30 secondes
     //On efface le texte précédent
     effacer_texte(joueur,background);
@@ -63,7 +63,7 @@ int login(t_joueur *joueur,BITMAP *background)
   else
   {
     for (essai=0;essai<3;essai++) {
-      textprintf_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
+      textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
       scanf("%s", joueur->mdp);
       if (keypressed() && key[KEY_ENTER] == 0)
       {
@@ -79,7 +79,7 @@ int login(t_joueur *joueur,BITMAP *background)
         if (strcmp(joueur->mdp,lecture_mdp(joueur)) != 0)
         {
           // Le mot de passe est invalide
-          textprintf_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
+          textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
           rest(10000); // 10 secondes
           //On efface le message précédent
           effacer_texte(joueur,background);
@@ -88,7 +88,7 @@ int login(t_joueur *joueur,BITMAP *background)
         else
         {
           // Connexion réussie
-          textprintf_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
+          textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
           rest(10000); // 10 secondes
           //On efface le message précédent
           effacer_texte(joueur,background);
@@ -97,7 +97,7 @@ int login(t_joueur *joueur,BITMAP *background)
         }
       }
     }
-    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
+    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
     rest(30000); // 30 secondes
     //On efface le message précédent
     effacer_texte(joueur,background);
