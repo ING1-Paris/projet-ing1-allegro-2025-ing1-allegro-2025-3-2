@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "signin.h"
-int charge_pseudo(t_joueur *joueur){
+char charge_pseudo(t_joueur *joueur){
   /*ON VERIFIE SI LE PSEUDO EXISTES*/
   /*DEFINITION DES VARIABLES*/
   char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos

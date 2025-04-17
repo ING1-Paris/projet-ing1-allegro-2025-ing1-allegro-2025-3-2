@@ -8,7 +8,6 @@ int signin(t_joueur *joueur,BITMAP*background)
 {
     /*DEFINITION DES VARIABLES ALLEGRO*/
     int couleur_texte = makecol(255,255,255);// couleur blanche
-    int couleur_effacee = makecol(0,0,0);// couleur noire
     int x = 250; // abscisses de début du texte
     int y = 250; // ordonnées du début du texte
 

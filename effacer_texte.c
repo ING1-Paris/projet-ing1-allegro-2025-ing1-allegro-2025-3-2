@@ -5,7 +5,7 @@
 #include "signin.h"
 // Effacer la zone du texte en restaurant la partie du fond correspondant
 void effacer_texte(t_joueur *joueur,BITMAP*background){
-
+    int couleur_effacee = makecol(0,0,0);// couleur noire
     //Le joueur doit appuyer sur "enter" pour valider son choix
     if(key[KEY_ENTER] == 0) {
         //Le joueur a appuyé sur une mauvaise touche/n'a pas appuyé du tout
