@@ -8,58 +8,91 @@ int signin(t_joueur *joueur,BITMAP*background)
 {
     /*DEFINITION DES VARIABLES ALLEGRO*/
     int couleur_texte = makecol(255,255,255);// couleur blanche
+    int couleur_effacee = makecol(0,0,0);// couleur noire
     int x = 250; // abscisses de début du texte
     int y = 250; // ordonnées du début du texte
 
-	/* CHOIX DU PSEUDO*/
+	/* CHOIX DU PSEUDO */
 
-    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo [1-20 caracteres]:\n");
+    textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
     scanf("%s", joueur->user);
 
 	/* VALIDATION DU PSEUDO*/
-	effacer texte(joueur,background);
-
-    if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
+    if (key[KEY_ENTER] == 0)
     {
-        textprintf_ex(screen,font,x,y,couleur_texte,-1,"pseudo invalide.\n");
+        // Le joueur n'a pas validé son choix : On le redirige vers le début du programme
+        signin(joueur,background);
         return 0;
     }
-    //On vérifie si le pseudo existes déjà
-    else
+    else // le joueur a validé son choix
     {
-        // Le pseudo n'existes pas
-        if(strcmp(joueur->user,charge_pseudo(joueur)) !=0)
+        // On efface le texte précédent
+        effacer_texte(joueur,background);
+
+        /* VERIFICATION DE LA TAILLE DU PSEUDO*/
+        if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
         {
-            charge_pseudo(joueur);
-            textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe.[1-12 caracteres]\n");
-            scanf("%s", joueur->mdp);
-            if (strlen(joueur->mdp) <1 || strlen(joueur->mdp) >12)
-            {
-                textprintf_ex(screen, font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
-                return 0;
-            }
-            else
-            {
-                charge_mdp(joueur);
-                textprintf_ex(screen,font,x,y,couleur_texte,-1,"Votre mot de passe a ete enregistre.\n");
-            }
-            //On redirige le joueur vers login
-            login(joueur);
+            textprintf_ex(screen,font,x,y,couleur_texte,-1,"pseudo invalide.\n");
+            rest(10000); // 10 secondes
+            // On efface le texte précédent
+            effacer_texte(joueur,background);
+            // On revient au début du programme
+            signin(joueur,background);
+            return 0;
         }
-        // Le pseudo existes déjà
-        else
-        {
-            // On vérifie si le joueur a cliqué au mauvais endroit
-            textprintf_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?\n");
-            if (key[KEY_ENTER] == 1)
-            {
-                //On redirige le joueur vers login
-                login(joueur);
+        // Le pseudo choisi est valide : On vérifie s'il est déjà utilisé ou non
+        else {
+            // Le pseudo existes déjà
+            if(strcmp(joueur->user,charge_pseudo(joueur)) ==0) {
+                textprintf_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
+                if (key[KEY_ENTER] == 0)
+                {
+                    // Le joueur doit choisir un nouveau pseudo
+                    signin(joueur,background);
+                    return 0;
+                }
+                else
+                {
+                    // C'est lui : on le redirige vers le menu principal(->login)
+                    return 0;
+                }
             }
-            else
+            else // Le pseudo n'existes pas
             {
-                // Le joueur doit choisir un nouveau pseudo
-                return signin(joueur);
+                // On enregistres le pseudo
+                charge_pseudo(joueur);
+                textprintf_ex(screen,font, x,y,couleur_texte,-1,"Votre pseudo est enregistre. Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
+                scanf("%s", joueur->mdp);
+                /* VALIDATION DU MOT DE PASSE*/
+                if (key[KEY_ENTER] == 0)
+                {
+                    // Le joueur n'a pas validé son choix : on le rediriges vers le début du programme
+                    signin(joueur,background);
+                }
+                else
+                {
+                    /* VERIFICATION DE LA TAILLE DU MOT DE PASSE */
+                    if (strlen(joueur->mdp) <1 || strlen(joueur->mdp) >12)
+                    {
+                        textprintf_ex(screen, font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
+                        rest(10000); // 10 secondes
+                        // On efface le texte précédent
+                        effacer_texte(joueur,background);
+                        // On retourne au début du programme
+                        signin(joueur,background);
+                        return 0;
+                    }
+                    else
+                    {
+                        charge_mdp(joueur);
+                        textprintf_ex(screen,font,x,y,couleur_texte,-1,"Votre mot de passe a ete enregistre.\n");
+                        rest(10000); // 10 secondes
+                        // On efface le texte
+                        effacer_texte(joueur,background);
+                        // On retourne au menu principal (-> login)
+                        return 0;
+                    }
+                }
             }
         }
     }
