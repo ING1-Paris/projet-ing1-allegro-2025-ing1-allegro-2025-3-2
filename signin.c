@@ -7,17 +7,12 @@
 int signin(t_joueur *joueur,BITMAP*background)
 {
     /*DEFINITION DES VARIABLES ALLEGRO*/
-    int couleur_texte = makecol(255,255,255);
+    int couleur_texte = makecol(255,255,255);// couleur blanche
     int x = 250; // abscisses de début du texte
     int y = 250; // ordonnées du début du texte
 
-
     textprintf_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo [1-20 caracteres]:\n");
     scanf("%s", joueur->user);
-    // Effacer la zone du texte en restaurant la partie du fond correspondant
-    int largeur_zone = 400;
-    int hauteur_zone = text_height(font);
-    blit(background, screen, x, y, x, y, largeur_zone, hauteur_zone);
 
     if (strlen(joueur->user) < 1 || strlen(joueur->user) > 20)
     {
