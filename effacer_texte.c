@@ -15,3 +15,5 @@ void effacer_texte(t_joueur *joueur,BITMAP*background){
     blit(background, screen, x, y, x, y, largeur_zone, hauteur_zone);
 
 }
+void ecrire_texte(t_joueur *joueur) {
+}
