@@ -10,6 +10,7 @@ int signin(t_joueur *joueur,BITMAP*background)
     int couleur_texte = makecol(255,255,255);// couleur blanche
     int x = SCREEN_W/2; // abscisses de début du texte
     int y = SCREEN_H/2; // ordonnées du début du texte
+    char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
@@ -21,7 +22,8 @@ int signin(t_joueur *joueur,BITMAP*background)
         {
             // Le joueur a validé son choix : on efface le texte précédent
             effacer_texte(joueur,background);
-            if(strcmp(joueur->user,verifie_pseudo) ==0)
+            // ustrstr trouve la première occurence de joueur->user dans pseudos
+            if(ustrstr(joueur->user,pseudos))
             {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 switch (readkey()>> 8)
