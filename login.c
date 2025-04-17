@@ -12,38 +12,22 @@ int login(t_joueur *joueur,BITMAP *background)
   int x = SCREEN_W/2; // abscisses de début du texte
   int y = SCREEN_H/2; // ordonnées du début du texte
 
-  for(essai=0;essai<3;essai++)
-  {
+  for(essai=0;essai<3;essai++) {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
     scanf("%s", joueur->user);
-    if (keypressed() && key[KEY_ENTER] == 0)
+    switch (readkey()>>8)
     {
-      //On efface le texte précédent
-      effacer_texte(joueur,background);
-      // Le joueur n'a pas validé son choix : il perd un essai
-      essai++;
-    }
-
-    if (keypressed() && key[KEY_ENTER] == 1)// Le joueur a validé son choix
-    {
-      // On efface le texte précédent
-      effacer_texte(joueur,background);
-
-      /* VERIFICATION DE L'EXISTENCE DU PSEUDO*/
-
-      if(strcmp(joueur->user,lecture_pseudo)!=0)
-      {
-        //Pseudo invalide
-        textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Votre nom d'utilisateur n'existes pas.\n");
-        rest(10000); // 10 secondes
-        //On efface le message précédent
+      case KEY_ENTER: {
+        //Le joueur a validé son choix
+        // On efface le texte précédent
         effacer_texte(joueur,background);
-        essai++; // le joueur perd un essai
+        //On vérifie le pseudo et le mot de passe
       }
-      else
-      {
-        // Pseudo valide : on sort de la boucle for
-        return essai;
+      default: {
+        //On efface le texte précédent
+        effacer_texte(joueur,background);
+        // Le joueur n'a pas validé son choix : il perd un essai
+        essai++;
       }
     }
   }
@@ -66,36 +50,38 @@ int login(t_joueur *joueur,BITMAP *background)
     {
       textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
       scanf("%s", joueur->mdp);
-      if (keypressed() && key[KEY_ENTER] == 0)
+      switch (readkey()>>8)
       {
-        //On efface le texte précédent
-        effacer_texte(joueur,background);
-        // Le joueur n'a pas validé son choix : il perd un essai
-        essai++;
-      }
-      if (keypressed() && key[KEY_ENTER] == 1)
-      {
-        //On efface le texte précédent
-        effacer_texte(joueur,background);
-        /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
-        if (strcmp(joueur->mdp,lecture_mdp) != 0)
+        case KEY_ENTER:
         {
-          // Le mot de passe est invalide
-          textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
-          rest(10000); // 10 secondes
-          //On efface le message précédent
+          //On efface le texte précédent
           effacer_texte(joueur,background);
-          essai++;
+          /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
+          if (strcmp(joueur->mdp,lecture_mdp) != 0)
+          {
+            // Le mot de passe est invalide
+            textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
+            rest(10000); // 10 secondes
+            //On efface le message précédent
+            effacer_texte(joueur,background);
+            essai++;
+          }
+          else
+          {
+            // Connexion réussie
+            textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
+            rest(10000); // 10 secondes
+            //On efface le message précédent
+            effacer_texte(joueur,background);
+            // Mot de passe valide : on sort de la boucle for
+            return 0;
+          }
         }
-        else
-        {
-          // Connexion réussie
-          textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
-          rest(10000); // 10 secondes
-          //On efface le message précédent
+        default: {
+          //On efface le texte précédent
           effacer_texte(joueur,background);
-          // Mot de passe valide : on sort de la boucle for
-          return 0;
+          // Le joueur n'a pas validé son choix : il perd un essai
+          essai++;
         }
       }
     }
