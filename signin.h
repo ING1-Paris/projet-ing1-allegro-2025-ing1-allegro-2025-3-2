@@ -14,7 +14,7 @@ typedef struct joueur{
 int signin(t_joueur *joueur,BITMAP*background);
 char charge_pseudo(t_joueur *joueur);
 int charge_mdp(t_joueur *joueur);
-int login(t_joueur *joueur);
+int login(t_joueur *joueur,BITMAP*background);
 int lecture_pseudo(t_joueur *joueur);
 int lecture_mdp(t_joueur *joueur);
 void effacer_texte(t_joueur *joueur,BITMAP*background);
