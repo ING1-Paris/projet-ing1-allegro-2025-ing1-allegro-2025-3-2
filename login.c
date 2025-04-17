@@ -21,6 +21,7 @@ int login(t_joueur *joueur,BITMAP *background)
         //Le joueur a validé son choix : on efface le texte précédent
         effacer_texte(joueur,background);
         //On vérifie le pseudo et le mot de passe
+        return 0;
       }
       default: {
         //On efface le texte précédent
@@ -42,6 +43,7 @@ int login(t_joueur *joueur,BITMAP *background)
     effacer_texte(joueur,background);
     //On revient au début du programme
     login(joueur,background);
+    return 0;
   }
   else
   {
@@ -91,5 +93,4 @@ int login(t_joueur *joueur,BITMAP *background)
     //On retourne au début du programme
     login(joueur,background);
   }
-  return 0;
 }
