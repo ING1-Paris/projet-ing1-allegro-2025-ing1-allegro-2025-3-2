@@ -16,4 +16,6 @@ void effacer_texte(t_joueur *joueur,BITMAP*background){
 
 }
 void ecrire_texte(t_joueur *joueur) {
+    // saisie + affichage du texte au fur et à mesure de la saisie
+    // respecte la limite de caractères : entre 1 et 12-> mdp et entre 1 et 20 -> pseudo
 }
