@@ -62,7 +62,8 @@ int login(t_joueur *joueur,BITMAP *background)
   }
   else
   {
-    for (essai=0;essai<3;essai++) {
+    for (essai=0;essai<3;essai++)
+    {
       textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
       scanf("%s", joueur->mdp);
       if (keypressed() && key[KEY_ENTER] == 0)
@@ -72,7 +73,8 @@ int login(t_joueur *joueur,BITMAP *background)
         // Le joueur n'a pas validé son choix : il perd un essai
         essai++;
       }
-      if (keypressed() && key[KEY_ENTER] == 1) {
+      if (keypressed() && key[KEY_ENTER] == 1)
+      {
         //On efface le texte précédent
         effacer_texte(joueur,background);
         /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
