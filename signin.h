@@ -19,8 +19,7 @@ char charge_joueur(t_joueur *joueur);
 char verifie_pseudo(t_joueur *joueur);
 
 /* PROTOTYPES DES FONCTIONS DE LECTURE*/
-int lecture_pseudo(t_joueur *joueur);
-int lecture_mdp(t_joueur *joueur);
+int lecture_joueur(t_joueur *joueur);
 
 /* PROTOTYPES DE LA FONCTION QUI EFFACES LE TEXTE*/
 void effacer_texte(t_joueur *joueur,BITMAP*background);
