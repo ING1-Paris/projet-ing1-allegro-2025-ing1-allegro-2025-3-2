@@ -38,12 +38,9 @@ int login(t_joueur *joueur,BITMAP *background)
       }
     }
   }
-  textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
 
   if (essai == 3)
   {
-    // On efface le message précédent
-    effacer_texte(joueur,background);
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
     rest(30000); // On attend 30 secondes
     //On efface le texte précédent
