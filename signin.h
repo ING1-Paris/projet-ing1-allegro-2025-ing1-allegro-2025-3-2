@@ -23,5 +23,5 @@ int lecture_joueur(t_joueur *joueur);
 
 /* PROTOTYPES DES FONCTIONS DE TEXTE*/
 void effacer_texte(t_joueur *joueur,BITMAP*background);
-void ecrire_texte(t_joueur *joueur);
+int ecrire_texte(t_joueur *joueur);
 #endif //SIGNIN_H
