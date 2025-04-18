@@ -5,9 +5,6 @@
 #include "signin.h"
 char verifie_joueur(t_joueur *joueur, char *name)
 {
-    /*DEFINITION DES VARIABLES*/
-    char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
-    int i=0;
 
     /* OUVERTURE DU FICHIER EN MODE LECTURE*/
     FILE* Joueurs = fopen("./donnees_sauvegardees/joueur.txt", "r");
