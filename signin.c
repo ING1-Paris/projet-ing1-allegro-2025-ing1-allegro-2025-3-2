@@ -47,6 +47,7 @@ int signin(t_joueur *joueur,BITMAP*background)
                 //Le pseudo n'existes pas : on peut sortir de la boucle pour choisir le mdp
                 return 0;
             }
+            break;
         }
         default:
         {
@@ -83,4 +84,5 @@ int signin(t_joueur *joueur,BITMAP*background)
             break;
         }
     }
+    return 0;
 }
