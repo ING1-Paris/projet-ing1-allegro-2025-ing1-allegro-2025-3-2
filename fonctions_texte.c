@@ -15,13 +15,8 @@ void effacer_texte(t_joueur *joueur,BITMAP*background){
     blit(background, screen, x, y, x, y, largeur_zone, hauteur_zone);
 
 }
-// saisie + affichage du texte au fur et à mesure de la saisie
-// respecte la limite de caractères : entre 1 et 12-> mdp et entre 1 et 20 -> pseudo
-//1) Boucle while qui lit avec readkey()
-//2) Construit la chaîne caractère par caractère
-//3) Affiche la chaîne en direct avec textout à chaque itération
-//4) Enregistre le pseudo final dans joueur->user et le mdp final dans joueur->mdp
-int ecrire_texte(t_joueur *joueur,char name) {
+
+char ecrire_texte(t_joueur *joueur,char name) {
     /*DEFINITION DES VARIABLES*/
     int couleur_texte = makecol(255,255,255);
     int x = SCREEN_W/2; // abscisses de début du texte
@@ -41,6 +36,8 @@ int ecrire_texte(t_joueur *joueur,char name) {
                 { // si le scancode de la touche appuyée est entre A et Z
                     //On l'ajoute à joueur->user[i]
                     key[readkey()>>8] = joueur->user[i];
+                    //On l'affiche avec textout
+                    textout_centre_ex(screen,font,joueur->user,x,y,couleur_texte,-1);
                     //On met à jour i
                     i++;
                 }
@@ -49,14 +46,16 @@ int ecrire_texte(t_joueur *joueur,char name) {
                     //Quoi qu'il arrive, on met à jour i
                     i++;
                 }
+                return 0;
             }
             return 0;
         }
+        return joueur->user;
     }
 
     /* SAISIE DU MOT DE PASSE*/
 
-    else if (name[5] == "mdp")
+    if (name[5] == "mdp")
     {
         for (int i=0;i<12;i++)
         { // On fixe une limite de caractères pour le mot de passe
@@ -68,6 +67,8 @@ int ecrire_texte(t_joueur *joueur,char name) {
                 { // si le scancode de la touche appuyée est entre A et Z
                     //On l'ajoute à joueur->user[i]
                     key[readkey()>>8] = joueur->mdp[i];
+                    //On l'affiche avec textout
+                    textout_centre_ex(screen,font,joueur->mdp,x,y,couleur_texte,-1);
                     //On met à jour i
                     i++;
                 }
@@ -76,8 +77,11 @@ int ecrire_texte(t_joueur *joueur,char name) {
                     //Quoi qu'il arrive, on met à jour i
                     i++;
                 }
+                return 0;
             }
             return 0;
         }
+        return joueur->mdp;
     }
+    return 0;
 }
