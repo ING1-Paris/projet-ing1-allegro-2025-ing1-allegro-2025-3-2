@@ -11,6 +11,7 @@ int signin(t_joueur *joueur,BITMAP*background)
     int x = SCREEN_W/2; // abscisses du texte
     int y = SCREEN_H/2; // ordonnées du texte
     char name[5]; // indicateur de saisie
+    char texte[100];
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
@@ -18,7 +19,9 @@ int signin(t_joueur *joueur,BITMAP*background)
     *joueur->user == ecrire_texte(joueur,name); //Equivalent du scanf mais en allegro : saisie du pseudo
     switch (readkey() >> 8)
     {
+        texte[100] = "Choisissez un pseudo de 1-20 caracteres[ENTER]:\n";
         effacer_texte(background,texte); //on efface la question
+        texte[100] = *joueur->user;
         effacer_texte(background,texte);// On efface le pseudo
         case KEY_ENTER: // Le joueur a validé son choix
         {
@@ -26,6 +29,7 @@ int signin(t_joueur *joueur,BITMAP*background)
             {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 rest(10000); // 10 secondes
+                texte[100] = "Ce pseudo existes deja. Est-ce vous ?[ENTER]\n";
                 effacer_texte(background,texte);// On efface la question
                 switch (readkey()>> 8)
                 {
@@ -66,13 +70,16 @@ int signin(t_joueur *joueur,BITMAP*background)
     *joueur->mdp == ecrire_texte(joueur,name); // saisie du mot de passe
     switch (readkey() >> 8)
     {
+        texte[100] = "Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n";
         effacer_texte(background,texte);// On efface la question
+        texte[100] = *joueur->mdp;
         effacer_texte(background,texte);// On efface le mot de passe
         case KEY_ENTER:
         {
             charge_joueur(joueur);//On peut enregistrer le pseudo & le mot de passe
             textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
             rest(10000); // 10 secondes
+            texte[100] = "signin reussi !.\n";
             effacer_texte(background,texte);
             // On revient au menu principal
             break;
