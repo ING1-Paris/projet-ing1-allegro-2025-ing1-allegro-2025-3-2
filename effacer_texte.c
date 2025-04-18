@@ -14,6 +14,6 @@ char effacer_texte(BITMAP*background,char *texte){
     /* RECTANGLE NOIR COUVRANT LE TEXTE*/
     rectfill(screen, x-largeur_zone/2, y-hauteur_zone/2, x+largeur_zone/2, y+hauteur_zone/2+20, couleur_effacee);
     /* RESTAURATION DU FOND D'ECRAN*/
-    blit(screen, background, x, y, x, y, largeur_zone, hauteur_zone);
+    blit(screen, background, x-largeur_zone/2, y-hauteur_zone/2, x-largeur_zone/2, y-hauteur_zone/2, largeur_zone, hauteur_zone);
     return 0;
 }
