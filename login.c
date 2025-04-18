@@ -16,6 +16,8 @@ int login(t_joueur *joueur,BITMAP *background)
   for(essai=0;essai<3;essai++)
   {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
+    rest(10000); // 10 secondes
+    effacer_texte(background);
     //Equivalent du scanf mais en allegro
     ecrire_texte(joueur); // saisie du pseudo
     switch (readkey()>>8)
@@ -23,7 +25,7 @@ int login(t_joueur *joueur,BITMAP *background)
       case KEY_ENTER:
       {
         //Le joueur a validé son choix : on efface le texte précédent
-        effacer_texte(joueur,background);
+        effacer_texte(background);
         //On vérifie le pseudo
         if (ustrstr(joueur->user,pseudos)!= NULL)
         {
@@ -41,7 +43,7 @@ int login(t_joueur *joueur,BITMAP *background)
       default:
       {
         //On efface le texte précédent
-        effacer_texte(joueur,background);
+        effacer_texte(background);
         // Le joueur n'a pas validé son choix : il perd un essai
         essai++;
       }
