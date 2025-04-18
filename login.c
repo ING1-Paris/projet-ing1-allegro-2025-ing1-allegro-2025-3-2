@@ -16,35 +16,30 @@ int login(t_joueur *joueur,BITMAP *background,char name)
   {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
     name[5] = "user";
-    //Equivalent du scanf mais en allegro
-    *joueur->user == ecrire_texte(joueur,name); // saisie du pseudo
+    *joueur->user == ecrire_texte(joueur,name); // Equivalent du scanf mais en allegro : saisie du pseudo
     switch (readkey()>>8)
     {
+      effacer_texte(background);// On efface la question
+      effacer_texte(background);// : on efface le pseudo
       case KEY_ENTER: //Le joueur a validé son choix
       {
         //On vérifie le pseudo
         if (verifie_pseudo)
         {
           //Le pseudo existes.
-          effacer_texte(background);// On efface la question
-          effacer_texte(background);// : on efface le pseudo
           return 0;
         }
         else
         {
-          effacer_texte(background);// On efface la question
-          effacer_texte(background);// : on efface le pseudo
-          login(joueur,background);// Le pseudo entré n'existes pas : on revient au début
           essai++;// Le joueur perd un essai
         }
       }
       default:
       {
-        effacer_texte(background);// On efface la question
-        effacer_texte(background);// : on efface le pseudo
         essai++;// Le joueur perd un essai
       }
     }
+    return 0;
   }
 
   if (essai == 3)
@@ -64,13 +59,13 @@ int login(t_joueur *joueur,BITMAP *background,char name)
     *joueur->mdp == ecrire_texte(joueur,name); // saisie du mot de passe
     switch (readkey()>>8)
     {
+      effacer_texte(background);// On efface la question
+      effacer_texte(background);// : on efface le mot de passe
       case KEY_ENTER:
       {
         /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
         if (strcmp(joueur->mdp,lecture_joueur) != 0)
         {
-          effacer_texte(background);// On efface la question
-          effacer_texte(background);// : on efface le mot de passe
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
           rest(10000); // 10 secondes
           effacer_texte(background);// : on efface la question
@@ -78,8 +73,6 @@ int login(t_joueur *joueur,BITMAP *background,char name)
         }
         else
         {
-          effacer_texte(background);// On efface la question
-          effacer_texte(background);// : on efface le mot de passe
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
           rest(10000); // 10 secondes
           effacer_texte(background);//On efface la question
@@ -89,8 +82,6 @@ int login(t_joueur *joueur,BITMAP *background,char name)
       }
       default:
       {
-        effacer_texte(background);// On efface la question
-        effacer_texte(background);// : on efface le mot de passe
         essai++;// Le joueur perd un essai
       }
     }
