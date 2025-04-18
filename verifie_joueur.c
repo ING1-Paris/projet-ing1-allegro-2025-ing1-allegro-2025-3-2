@@ -17,12 +17,12 @@ char verifie_joueur(t_joueur *joueur, char *name)
         exit(1);
     }
 
-    if (name[5] == "user")
+    if (&name[5] == "user")
     {
         while (fscanf(Joueurs, "%s", joueur->user) != EOF)
         {
             //On vérifie si le pseudo du joueur existe
-            if (ustrstr(Joueur,joueur->user) != NULL)
+            if (strstr(Joueurs,joueur->user) != NULL)
             {
                 //le pseudo existes
             }
@@ -35,12 +35,12 @@ char verifie_joueur(t_joueur *joueur, char *name)
 
     /* SAISIE DU MOT DE PASSE*/
 
-    if (name[5] == "mdp")
+    if (&name[5] == "mdp")
     {
         while (fscanf(Joueurs, "%s", joueur->mdp) != EOF)
         {
             //On vérifie si le pseudo du joueur existe
-            if (ustrstr(Joueur,joueur->user) != NULL)
+            if (strstr(Joueurs,joueur->user) != NULL)
             {
                 //le pseudo existes
             }
