@@ -8,7 +8,7 @@ int main()
     t_joueur *joueur;
     char name[5];
     initialisation_allegro();
-    background = load_bitmap("C:\\Users\\galti\\CLionProjects\\exercice 2 BITMAP\\galaxie-andromede.bmp",NULL);
+    background = load_bitmap("C:\\HORTENSE GALTIER\\2024-2025 ING1 ECE\\INFORMATIQUE\\SEMESTRE 2\\COURS 4 ALLEGRO\\galaxie-andromede.bmp",NULL);
     if (!background)
     {
         allegro_message("pas pu trouver/charger mon_image.bmp");
