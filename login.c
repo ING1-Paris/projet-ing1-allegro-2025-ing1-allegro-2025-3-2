@@ -13,10 +13,11 @@ int login(t_joueur *joueur,BITMAP *background)
   int x = SCREEN_W/2; // abscisses de début du texte
   int y = SCREEN_H/2; // ordonnées du début du texte
 
-  for(essai=0;essai<3;essai++) {
+  for(essai=0;essai<3;essai++)
+  {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre nom d'utilisateur:\n");
     //Equivalent du scanf mais en allegro
-    ecrire_texte(joueur); // s'occupe de la saisie du pseudo, en respectant la limite de caractères
+    ecrire_texte(joueur); // saisie du pseudo
     switch (readkey()>>8)
     {
       case KEY_ENTER:
@@ -24,9 +25,17 @@ int login(t_joueur *joueur,BITMAP *background)
         //Le joueur a validé son choix : on efface le texte précédent
         effacer_texte(joueur,background);
         //On vérifie le pseudo
-        if (ustrstr(joueur->user,pseudos)!= NULL) {
+        if (ustrstr(joueur->user,pseudos)!= NULL)
+        {
           //Le pseudo existes.
           return 0;
+        }
+        else
+        {
+          // Le pseudo entré n'existes pas : on revient au début
+          login(joueur,background);
+          // Le joueur perd un essai
+          essai++;
         }
       }
       default:
@@ -49,54 +58,56 @@ int login(t_joueur *joueur,BITMAP *background)
     login(joueur,background);
     return 0;
   }
-  else
+
+  for (essai=0;essai<3;essai++)
   {
-    for (essai=0;essai<3;essai++)
+    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
+    //Equivalent du scanf mais en allegro
+    ecrire_texte(joueur); // saisie du mot de passe
+    switch (readkey()>>8)
     {
-      textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
-      //Equivalent du scanf mais en allegro
-      ecrire_texte(joueur); // s'occupe de la saisie du mot de passe, en respectant la limite de caractères
-      switch (readkey()>>8)
+      case KEY_ENTER:
       {
-        case KEY_ENTER:
+        //On efface le texte précédent
+        effacer_texte(joueur,background);
+        /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
+        if (strcmp(joueur->mdp,lecture_joueur) != 0)
         {
-          //On efface le texte précédent
+          // Le mot de passe est invalide
+          textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
+          rest(10000); // 10 secondes
+          //On efface le message précédent
           effacer_texte(joueur,background);
-          /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
-          if (strcmp(joueur->mdp,lecture_joueur) != 0)
-          {
-            // Le mot de passe est invalide
-            textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
-            rest(10000); // 10 secondes
-            //On efface le message précédent
-            effacer_texte(joueur,background);
-            essai++;
-          }
-          else
-          {
-            // Connexion réussie
-            textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
-            rest(10000); // 10 secondes
-            //On efface le message précédent
-            effacer_texte(joueur,background);
-            // Mot de passe valide : on sort de la boucle for
-            return 0;
-          }
-        }
-        default:
-        {
-          //On efface le texte précédent
-          effacer_texte(joueur,background);
-          // Le joueur n'a pas validé son choix : il perd un essai
           essai++;
         }
+        else
+        {
+          // Connexion réussie
+          textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
+          rest(10000); // 10 secondes
+          //On efface le message précédent
+          effacer_texte(joueur,background);
+          // Mot de passe valide : on va vers le menu du jeu (niveaux)
+          return 0;
+        }
+      }
+      default:
+      {
+        //On efface le texte précédent
+        effacer_texte(joueur,background);
+        // Le joueur n'a pas validé son choix : il perd un essai
+        essai++;
       }
     }
-    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Vous n'avez plus d'essais disponibles.\n");
-    rest(30000); // 30 secondes
-    //On efface le message précédent
+  }
+  if (essai == 3)
+  {
+    textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
+    rest(30000); // On attend 30 secondes
+    //On efface le texte précédent
     effacer_texte(joueur,background);
-    //On retourne au début du programme
+    //On revient au début du programme
     login(joueur,background);
+    return 0;
   }
 }
