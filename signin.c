@@ -22,7 +22,7 @@ int signin(t_joueur *joueur,BITMAP*background)
         effacer_texte(background);// On efface le pseudo
         case KEY_ENTER: // Le joueur a validé son choix
         {
-            if(verifie_pseudo) // fonction vérifiant l'existence du pseudo
+            if(verifie_joueur) // fonction vérifiant l'existence du pseudo
             {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 rest(10000); // 10 secondes
