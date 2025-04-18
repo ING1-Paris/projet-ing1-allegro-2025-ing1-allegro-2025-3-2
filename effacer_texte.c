@@ -12,7 +12,7 @@ char effacer_texte(t_joueur *joueur,BITMAP*background){
     int hauteur_zone = text_height(font)+10;
     //On restaure le fond d'écran de la zone effacée
     blit(background, screen, x, y, x, y, largeur_zone, hauteur_zone);
-    for (int i=0;i<text_length(font,")");i++)
+    for (int i=0;i<text_length(font,textprintf_justify_ex(screen,font,x1,x2,y,diff,couleur_effacee,-1));i++)
     { // On fixe une limite de caractères pour le pseudo
         while (!key[KEY_ENTER])
         {// On ne s'arrête que quand le joueur appuie sur la touche ENTER
