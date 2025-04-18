@@ -59,19 +59,17 @@ int signin(t_joueur *joueur,BITMAP*background)
     /* CHOIX ET VALIDATION DU MOT DE PASSE */
 
     textprintf_centre_ex(screen,font, x,y,couleur_texte,-1,"Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
-    rest(10000); // 10 secondes
-    effacer_texte(background);// On efface la question
     // On saisit le mot de passe
     char name[5] = "mdp";
     // équivalent du scanf mais en allegro
     *joueur->mdp == ecrire_texte(joueur,name); // saisie du mot de passe
     switch (readkey() >> 8)
     {
+        effacer_texte(background);// On efface la question
+        effacer_texte(background);// On efface le mot de passe
         case KEY_ENTER:
         {
-            effacer_texte(background);
-            //On peut enregistrer le pseudo & le mot de passe
-            charge_joueur(joueur);
+            charge_joueur(joueur);//On peut enregistrer le pseudo & le mot de passe
             textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
             rest(10000); // 10 secondes
             effacer_texte(background);
