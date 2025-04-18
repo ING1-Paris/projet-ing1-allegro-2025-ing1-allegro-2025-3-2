@@ -99,4 +99,5 @@ int login(t_joueur *joueur,BITMAP *background,char name)
     login(joueur,background);//On revient au début du programme
     return 0;
   }
+  return 0;
 }
