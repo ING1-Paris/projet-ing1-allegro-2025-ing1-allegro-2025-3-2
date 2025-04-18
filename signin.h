@@ -18,7 +18,7 @@ int login(t_joueur *joueur,BITMAP*background);
 char charge_joueur(t_joueur *joueur);
 
 /* PROTOTYPES DE LA FONCTION DE LECTURE*/
-int verifie_joueur(t_joueur *joueur);
+int verifie_joueur(t_joueur *joueur,char name);
 
 /* PROTOTYPES DES FONCTIONS DE TEXTE*/
 char effacer_texte(BITMAP*background);
