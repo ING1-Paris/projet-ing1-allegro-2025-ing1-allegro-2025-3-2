@@ -7,7 +7,6 @@ int login(t_joueur *joueur,BITMAP *background,char name)
 {
   /*DEFINITION DES VARIABLES*/
   int essai =0;
-  char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
   /*DEFINITION DES VARIABLES*/
   int couleur_texte = makecol(255,255,255);
   int x = SCREEN_W/2; // abscisses de début du texte
