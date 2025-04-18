@@ -18,7 +18,7 @@ int signin(t_joueur *joueur,BITMAP*background)
     // On saisit le pseudo
     name[5] = "user";
     //Equivalent du scanf mais en allegro
-    ecrire_texte(joueur,name); // saisie du pseudo
+    *joueur->user == ecrire_texte(joueur,name); // saisie du pseudo
     switch (readkey() >> 8)
     {
         case KEY_ENTER:
@@ -63,7 +63,7 @@ int signin(t_joueur *joueur,BITMAP*background)
     // On saisit le mot de passe
     char name[5] = "mdp";
     // équivalent du scanf mais en allegro
-    ecrire_texte(joueur,name); // saisie du mot de passe
+    *joueur->mdp == ecrire_texte(joueur,name); // saisie du mot de passe
     switch (readkey() >> 8)
     {
         case KEY_ENTER:
