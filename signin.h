@@ -4,6 +4,7 @@
 #define SIGNIN_H
 #define LONGUEUR_MAX_PSEUDO 21
 #define NOMBRE_MAX_PSEUDOS 100
+#include <allegro.h>
 /*STRUCTURE DES INFORMATIONS ASSOCIEES AU JOUEUR*/
 typedef struct joueur{
     char user[20];
