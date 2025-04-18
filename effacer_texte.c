@@ -3,12 +3,12 @@
 #include <allegro.h>
 #include "signin.h"
 // Effacer la zone du texte en restaurant la partie du fond correspondant
-char effacer_texte(BITMAP*background,char texte){
+char effacer_texte(BITMAP*background,char *texte){
     int couleur_effacee = makecol(0,0,0);// couleur noire
     /* HAUTEUR DU TEXTE*/
     int hauteur_zone = text_height(font)+10;
     /* LARGEUR DU TEXTE*/
-    int largeur_zone = textlength(font,texte);
+    int largeur_zone = text_length(font,texte);
     /* RECTANGLE NOIR COUVRANT LE TEXTE*/
     rectfill(background, x, y, x+largeur_zone, y+hauteur_zone, couleur_effacee);
     /* RESTAURATION DU FOND D'ECRAN*/
