@@ -12,7 +12,7 @@ typedef struct joueur{
 
 /* PROTOTYPES DES FONCTIONS DE CONNEXION*/
 int signin(t_joueur *joueur,BITMAP*background);
-int login(t_joueur *joueur,BITMAP*background);
+int login(t_joueur *joueur,BITMAP*background,char name);
 
 /* PROTOTYPES DE LA FONCTION D'ECRITURE*/
 char charge_joueur(t_joueur *joueur);
