@@ -35,18 +35,15 @@ int login(t_joueur *joueur,BITMAP *background,char name)
         {
           effacer_texte(background);// On efface la question
           effacer_texte(background);// : on efface le pseudo
-          // Le pseudo entré n'existes pas : on revient au début
-          login(joueur,background);
-          // Le joueur perd un essai
-          essai++;
+          login(joueur,background);// Le pseudo entré n'existes pas : on revient au début
+          essai++;// Le joueur perd un essai
         }
       }
       default:
       {
         effacer_texte(background);// On efface la question
         effacer_texte(background);// : on efface le pseudo
-        // Le joueur n'a pas validé son choix : il perd un essai
-        essai++;
+        essai++;// Le joueur perd un essai
       }
     }
   }
@@ -56,8 +53,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
     rest(30000); // On attend 30 secondes
     effacer_texte(background);//On efface le texte précédent
-    //On revient au début du programme
-    login(joueur,background);
+    login(joueur,background);//On revient au début du programme
     return 0;
   }
 
@@ -76,21 +72,18 @@ int login(t_joueur *joueur,BITMAP *background,char name)
         {
           effacer_texte(background);// On efface la question
           effacer_texte(background);// : on efface le mot de passe
-          // Le mot de passe est invalide
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
           rest(10000); // 10 secondes
           effacer_texte(background);// : on efface la question
-          essai++;
+          essai++; // le joueur perd un essai
         }
         else
         {
           effacer_texte(background);// On efface la question
           effacer_texte(background);// : on efface le mot de passe
-          // Connexion réussie
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
           rest(10000); // 10 secondes
-          //On efface le message précédent
-          effacer_texte(background);
+          effacer_texte(background);//On efface la question
           // Mot de passe valide : on va vers le menu du jeu (niveaux)
           return 0;
         }
@@ -99,8 +92,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
       {
         effacer_texte(background);// On efface la question
         effacer_texte(background);// : on efface le mot de passe
-        // Le joueur n'a pas validé son choix : il perd un essai
-        essai++;
+        essai++;// Le joueur perd un essai
       }
     }
   }
