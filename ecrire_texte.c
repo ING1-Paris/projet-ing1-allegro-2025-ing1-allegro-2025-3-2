@@ -12,7 +12,7 @@ char ecrire_texte(t_joueur *joueur,char *name) {
 
     /* SAISIE DU PSEUDO*/
 
-    if (name[5] == "user")
+    if (&name[5] == "user")
     {
         for (int i=0;i<20;i++)
         { // On fixe une limite de caractères pour le pseudo
@@ -43,7 +43,7 @@ char ecrire_texte(t_joueur *joueur,char *name) {
 
     /* SAISIE DU MOT DE PASSE*/
 
-    if (name[5] == "mdp")
+    if (&name[5] == "mdp")
     {
         for (int i=0;i<12;i++)
         { // On fixe une limite de caractères pour le mot de passe
