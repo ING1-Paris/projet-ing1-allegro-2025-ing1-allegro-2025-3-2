@@ -21,6 +21,6 @@ char charge_joueur(t_joueur *joueur);
 int verifie_joueur(t_joueur *joueur,char name);
 
 /* PROTOTYPES DES FONCTIONS DE TEXTE*/
-char effacer_texte(BITMAP*background);
+char effacer_texte(BITMAP*background,char texte);
 char ecrire_texte(t_joueur *joueur,char name);
 #endif //SIGNIN_H
