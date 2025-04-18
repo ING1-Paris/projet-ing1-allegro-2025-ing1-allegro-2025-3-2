@@ -36,5 +36,5 @@ char effacer_texte(t_joueur *joueur,BITMAP*background){
         }
         return 0;
     }
-
+    return 0;
 }
