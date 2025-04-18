@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "signin.h"
-char verifie_joueur(t_joueur *joueur)
+char verifie_joueur(t_joueur *joueur, char name)
 {
     /*DEFINITION DES VARIABLES*/
     char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
