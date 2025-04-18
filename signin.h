@@ -14,12 +14,11 @@ typedef struct joueur{
 int signin(t_joueur *joueur,BITMAP*background);
 int login(t_joueur *joueur,BITMAP*background);
 
-/* PROTOTYPES DES FONCTIONS D'ECRITURE*/
+/* PROTOTYPES DE LA FONCTION D'ECRITURE*/
 char charge_joueur(t_joueur *joueur);
-char verifie_joueur(t_joueur *joueur);
 
-/* PROTOTYPES DES FONCTIONS DE LECTURE*/
-int lecture_joueur(t_joueur *joueur);
+/* PROTOTYPES DE LA FONCTION DE LECTURE*/
+int verifie_joueur(t_joueur *joueur);
 
 /* PROTOTYPES DES FONCTIONS DE TEXTE*/
 char effacer_texte(BITMAP*background);
