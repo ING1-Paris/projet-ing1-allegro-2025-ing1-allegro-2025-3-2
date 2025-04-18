@@ -10,7 +10,6 @@ int signin(t_joueur *joueur,BITMAP*background)
     int couleur_texte = makecol(255,255,255);// couleur blanche
     int x = SCREEN_W/2; // abscisses du texte
     int y = SCREEN_H/2; // ordonnées du texte
-    char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
     char name[5]; // indicateur de saisie
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
