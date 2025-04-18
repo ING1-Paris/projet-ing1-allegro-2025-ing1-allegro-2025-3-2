@@ -24,7 +24,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
       case KEY_ENTER: //Le joueur a validé son choix
       {
         //On vérifie le pseudo
-        if (verifie_pseudo)
+        if (verifie_joueur)
         {
           //Le pseudo existes.
           return 0;
@@ -66,7 +66,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
       case KEY_ENTER:
       {
         /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
-        if (strcmp(joueur->mdp,lecture_joueur) != 0)
+        if (!verifie_joueur)
         {
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
           rest(10000); // 10 secondes
