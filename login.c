@@ -24,7 +24,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
       case KEY_ENTER: //Le joueur a validé son choix
       {
         //On vérifie le pseudo
-        if (ustrstr(joueur->user,pseudos)!= NULL)
+        if (ustrstr(joueur->user,lecture_joueur)!= NULL)
         {
           //Le pseudo existes.
           effacer_texte(background);// On efface la question
