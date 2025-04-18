@@ -11,11 +11,14 @@ int signin(t_joueur *joueur,BITMAP*background)
     int x = SCREEN_W/2; // abscisses de début du texte
     int y = SCREEN_H/2; // ordonnées du début du texte
     char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
+    char name[5];
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
+    // On saisit le pseudo
+    name[5] = "user";
     //Equivalent du scanf mais en allegro
-    ecrire_texte(joueur); // saisie du pseudo
+    ecrire_texte(joueur,name); // saisie du pseudo
     switch (readkey() >> 8)
     {
         case KEY_ENTER:
@@ -57,8 +60,10 @@ int signin(t_joueur *joueur,BITMAP*background)
     }
     /* CHOIX ET VALIDATION DU MOT DE PASSE */
     textprintf_centre_ex(screen,font, x,y,couleur_texte,-1,"Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
+    // On saisit le mot de passe
+    char name[5] = "mdp";
     // équivalent du scanf mais en allegro
-    ecrire_texte(joueur); // saisie du mot de passe
+    ecrire_texte(joueur,name); // saisie du mot de passe
     switch (readkey() >> 8)
     {
         case KEY_ENTER:
