@@ -74,6 +74,7 @@ int signin(t_joueur *joueur,BITMAP*background)
     {
         case KEY_ENTER:
         {
+            effacer_texte(background);
             //On peut enregistrer le pseudo & le mot de passe
             charge_joueur(joueur);
             textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
