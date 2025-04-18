@@ -8,32 +8,28 @@ int signin(t_joueur *joueur,BITMAP*background)
 {
     /*DEFINITION DES VARIABLES ALLEGRO*/
     int couleur_texte = makecol(255,255,255);// couleur blanche
-    int x = SCREEN_W/2; // abscisses de début du texte
-    int y = SCREEN_H/2; // ordonnées du début du texte
+    int x = SCREEN_W/2; // abscisses du texte
+    int y = SCREEN_H/2; // ordonnées du texte
     char pseudos[NOMBRE_MAX_PSEUDOS][LONGUEUR_MAX_PSEUDO]; // Tableau de pseudos
-    char name[5];
+    char name[5]; // indicateur de saisie
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
-    rest(10000); // 10 secondes
-    effacer_texte(background);
-    // On saisit le pseudo
-    name[5] = "user";
-    //Equivalent du scanf mais en allegro
-    *joueur->user == ecrire_texte(joueur,name); // saisie du pseudo
+    name[5] = "user";// On saisit le pseudo
+    *joueur->user == ecrire_texte(joueur,name); //Equivalent du scanf mais en allegro : saisie du pseudo
     switch (readkey() >> 8)
     {
-        case KEY_ENTER:
+        case KEY_ENTER: // Le joueur a validé son choix
         {
-            // Le joueur a validé son choix : on efface le texte précédent
-            effacer_texte(background);
+            effacer_texte(background); //on efface la question
+            effacer_texte(background);// On efface le pseudo
             // ustrstr trouve la première occurence de joueur->user dans pseudos
             // renvoie un pointeur si occurence, sinon NULL
             if(ustrstr(joueur->user,pseudos) != NULL)
             {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 rest(10000); // 10 secondes
-                effacer_texte(background);
+                effacer_texte(background);// On efface la question
                 switch (readkey()>> 8)
                 {
                     case KEY_ENTER:
@@ -62,10 +58,12 @@ int signin(t_joueur *joueur,BITMAP*background)
             break;
         }
     }
+
     /* CHOIX ET VALIDATION DU MOT DE PASSE */
+
     textprintf_centre_ex(screen,font, x,y,couleur_texte,-1,"Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
     rest(10000); // 10 secondes
-    effacer_texte(background);
+    effacer_texte(background);// On efface la question
     // On saisit le mot de passe
     char name[5] = "mdp";
     // équivalent du scanf mais en allegro
