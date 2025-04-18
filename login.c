@@ -100,10 +100,8 @@ int login(t_joueur *joueur,BITMAP *background,char name)
   {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
     rest(30000); // On attend 30 secondes
-    //On efface le texte précédent
-    effacer_texte(background);
-    //On revient au début du programme
-    login(joueur,background);
+    effacer_texte(background);//On efface le texte précédent
+    login(joueur,background);//On revient au début du programme
     return 0;
   }
 }
