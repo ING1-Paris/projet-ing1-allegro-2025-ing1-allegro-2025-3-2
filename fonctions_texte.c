@@ -21,8 +21,33 @@ void effacer_texte(t_joueur *joueur,BITMAP*background){
 //2) Construit la chaîne caractère par caractère
 //3) Affiche la chaîne en direct avec textout à chaque itération
 //4) Enregistre le pseudo final dans joueur->user et le mdp final dans joueur->mdp
-void ecrire_texte(t_joueur *joueur) {
-    while (!key[KEY_ENTER]) {
+int ecrire_texte(t_joueur *joueur) {
+    /*DEFINITION DES VARIABLES*/
+    int couleur_texte = makecol(255,255,255);
+    int x = SCREEN_W/2; // abscisses de début du texte
+    int y = SCREEN_H/2; // ordonnées du début du texte
 
+    /* SAISIE DU PSEUDO*/
+
+    for (int i=0;i<20;i++)
+    { // On fixe une limite de caractères pour le pseudo
+        while (!key[KEY_ENTER])
+        {// On ne s'arrête que quand le joueur appuie sur la touche ENTER
+            //Retourne la touche appuyée
+            readkey();
+            if ((readkey()>>8) >= KEY_A && (readkey()>>8) <= KEY_Z)
+            { // si le scancode de la touche appuyée est entre A et Z
+                //On l'ajoute à joueur->user[i]
+                key[readkey()>>8] = joueur->user[i];
+                //On met à jour i
+                i++;
+            }
+            else
+            {
+                //Quoi qu'il arrive, on met à jour i
+                i++;
+            }
+        }
+        return 0;
     }
 }
