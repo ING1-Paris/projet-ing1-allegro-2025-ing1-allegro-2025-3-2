@@ -15,7 +15,7 @@ int signin(t_joueur *joueur,BITMAP*background)
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
-    name[5] = "user";// On saisit le pseudo
+    name[5] = "user";
     *joueur->user == ecrire_texte(joueur,name); //Equivalent du scanf mais en allegro : saisie du pseudo
     switch (readkey() >> 8)
     {
