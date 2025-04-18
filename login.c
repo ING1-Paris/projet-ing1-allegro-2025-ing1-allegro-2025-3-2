@@ -7,6 +7,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
 {
   /*DEFINITION DES VARIABLES*/
   int essai =0;
+  char texte[100];
   /*DEFINITION DES VARIABLES*/
   int couleur_texte = makecol(255,255,255);
   int x = SCREEN_W/2; // abscisses de début du texte
@@ -19,7 +20,9 @@ int login(t_joueur *joueur,BITMAP *background,char name)
     *joueur->user == ecrire_texte(joueur,name); // Equivalent du scanf mais en allegro : saisie du pseudo
     switch (readkey()>>8)
     {
+      texte[100] = "Saisissez votre nom d'utilisateur:\n";
       effacer_texte(background,texte);// On efface la question
+      texte[100] = *joueur->user;
       effacer_texte(background,texte);// : on efface le pseudo
       case KEY_ENTER: //Le joueur a validé son choix
       {
@@ -48,6 +51,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
   {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
     rest(30000); // On attend 30 secondes
+    texte[100] = "Attendre 30 secondes avant de recommencer.\n";
     effacer_texte(background,texte);//On efface le texte précédent
     login(joueur,background);//On revient au début du programme
     return 0;
@@ -61,7 +65,9 @@ int login(t_joueur *joueur,BITMAP *background,char name)
     *joueur->mdp == ecrire_texte(joueur,name); // saisie du mot de passe
     switch (readkey()>>8)
     {
+      texte[100] = "Saisissez votre mot de passe:\n";
       effacer_texte(background,texte);// On efface la question
+      texte[100] = *joueur->mdp;
       effacer_texte(background,texte);// : on efface le mot de passe
       case KEY_ENTER:
       {
@@ -70,6 +76,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
         {
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"mot de passe invalide.\n");
           rest(10000); // 10 secondes
+          texte[100] = "mot de passe invalide.\n";
           effacer_texte(background,texte);// : on efface la question
           essai++; // le joueur perd un essai
         }
@@ -77,6 +84,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
         {
           textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"connexion reussie.\n");
           rest(10000); // 10 secondes
+          texte[100] = "connexion reussie.\n";
           effacer_texte(background,texte);//On efface la question
           // Mot de passe valide : on va vers le menu du jeu (niveaux)
           return 0;
@@ -95,6 +103,7 @@ int login(t_joueur *joueur,BITMAP *background,char name)
   {
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Attendre 30 secondes avant de recommencer.\n");
     rest(30000); // On attend 30 secondes
+    texte[100] = "Attendre 30 secondes avant de recommencer.\n";
     effacer_texte(background,texte);//On efface le texte précédent
     login(joueur,background);//On revient au début du programme
     return 0;
