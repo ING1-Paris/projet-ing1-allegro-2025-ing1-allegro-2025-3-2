@@ -15,6 +15,8 @@ int signin(t_joueur *joueur,BITMAP*background)
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
+    rest(10000); // 10 secondes
+    effacer_texte(background);
     // On saisit le pseudo
     name[5] = "user";
     //Equivalent du scanf mais en allegro
@@ -24,12 +26,14 @@ int signin(t_joueur *joueur,BITMAP*background)
         case KEY_ENTER:
         {
             // Le joueur a validé son choix : on efface le texte précédent
-            effacer_texte(joueur,background);
+            effacer_texte(background);
             // ustrstr trouve la première occurence de joueur->user dans pseudos
             // renvoie un pointeur si occurence, sinon NULL
             if(ustrstr(joueur->user,pseudos) != NULL)
             {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
+                rest(10000); // 10 secondes
+                effacer_texte(background);
                 switch (readkey()>> 8)
                 {
                     case KEY_ENTER:
@@ -60,6 +64,8 @@ int signin(t_joueur *joueur,BITMAP*background)
     }
     /* CHOIX ET VALIDATION DU MOT DE PASSE */
     textprintf_centre_ex(screen,font, x,y,couleur_texte,-1,"Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
+    rest(10000); // 10 secondes
+    effacer_texte(background);
     // On saisit le mot de passe
     char name[5] = "mdp";
     // équivalent du scanf mais en allegro
@@ -72,7 +78,7 @@ int signin(t_joueur *joueur,BITMAP*background)
             charge_joueur(joueur);
             textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
             rest(10000); // 10 secondes
-            effacer_texte(joueur,background);
+            effacer_texte(background);
             // On revient au menu principal
             break;
         }
