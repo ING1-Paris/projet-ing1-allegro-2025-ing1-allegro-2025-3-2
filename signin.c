@@ -18,15 +18,15 @@ int signin(t_joueur *joueur,BITMAP*background)
     *joueur->user == ecrire_texte(joueur,name); //Equivalent du scanf mais en allegro : saisie du pseudo
     switch (readkey() >> 8)
     {
-        effacer_texte(background); //on efface la question
-        effacer_texte(background);// On efface le pseudo
+        effacer_texte(background,texte); //on efface la question
+        effacer_texte(background,texte);// On efface le pseudo
         case KEY_ENTER: // Le joueur a validé son choix
         {
             if(verifie_joueur) // fonction vérifiant l'existence du pseudo
             {
                 textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Ce pseudo existes deja. Est-ce vous ?[ENTER]\n");
                 rest(10000); // 10 secondes
-                effacer_texte(background);// On efface la question
+                effacer_texte(background,texte);// On efface la question
                 switch (readkey()>> 8)
                 {
                     case KEY_ENTER:
@@ -66,14 +66,14 @@ int signin(t_joueur *joueur,BITMAP*background)
     *joueur->mdp == ecrire_texte(joueur,name); // saisie du mot de passe
     switch (readkey() >> 8)
     {
-        effacer_texte(background);// On efface la question
-        effacer_texte(background);// On efface le mot de passe
+        effacer_texte(background,texte);// On efface la question
+        effacer_texte(background,texte);// On efface le mot de passe
         case KEY_ENTER:
         {
             charge_joueur(joueur);//On peut enregistrer le pseudo & le mot de passe
             textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"signin reussi !.\n");
             rest(10000); // 10 secondes
-            effacer_texte(background);
+            effacer_texte(background,texte);
             // On revient au menu principal
             break;
         }
