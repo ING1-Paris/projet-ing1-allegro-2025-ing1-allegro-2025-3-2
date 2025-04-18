@@ -25,7 +25,7 @@ char ecrire_texte(t_joueur *joueur,char name) {
                     //On l'ajoute à joueur->user[i]
                     key[readkey()>>8] = joueur->user[i];
                     //On l'affiche avec textout
-                    textout_centre_ex(screen,font,joueur->user,x,y,couleur_texte,-1);
+                    textout_centre_ex(screen,font,joueur->user,x,y+20,couleur_texte,-1);
                     //On met à jour i
                     i++;
                 }
@@ -56,7 +56,7 @@ char ecrire_texte(t_joueur *joueur,char name) {
                     //On l'ajoute à joueur->user[i]
                     key[readkey()>>8] = joueur->mdp[i];
                     //On l'affiche avec textout
-                    textout_centre_ex(screen,font,joueur->mdp,x,y,couleur_texte,-1);
+                    textout_centre_ex(screen,font,joueur->mdp,x,y+20,couleur_texte,-1);
                     //On met à jour i
                     i++;
                 }
