@@ -4,7 +4,7 @@
 #include "signin.h"
 
 
-char ecrire_texte(t_joueur *joueur,char name) {
+char ecrire_texte(t_joueur *joueur,char *name) {
     /*DEFINITION DES VARIABLES*/
     int couleur_texte = makecol(255,255,255);
     int x = SCREEN_W/2; // abscisses de début du texte

@@ -8,7 +8,13 @@ int main()
     t_joueur *joueur;
     char name[5];
     initialisation_allegro();
-    background = load_bitmap("./images/background.bmp",NULL);
+    background = load_bitmap("C:\\Users\\galti\\CLionProjects\\exercice 2 BITMAP\\galaxie-andromede.bmp",NULL);
+    if (!background)
+    {
+        allegro_message("pas pu trouver/charger mon_image.bmp");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
     if (key[KEY_ESC]) {
         login(joueur,background,name);
     }

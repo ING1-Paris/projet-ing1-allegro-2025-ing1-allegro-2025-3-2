@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <allegro.h>
 #include "signin.h"
-int login(t_joueur *joueur,BITMAP *background,char name)
+int login(t_joueur *joueur,BITMAP *background,char *name)
 {
   /*DEFINITION DES VARIABLES*/
   int essai =0;
