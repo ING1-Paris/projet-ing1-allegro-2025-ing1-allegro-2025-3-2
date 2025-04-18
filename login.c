@@ -33,10 +33,12 @@ int login(t_joueur *joueur,BITMAP *background,char name)
         {
           essai++;// Le joueur perd un essai
         }
+        break;
       }
       default:
       {
         essai++;// Le joueur perd un essai
+        break;
       }
     }
     return 0;
@@ -79,12 +81,15 @@ int login(t_joueur *joueur,BITMAP *background,char name)
           // Mot de passe valide : on va vers le menu du jeu (niveaux)
           return 0;
         }
+        break;
       }
       default:
       {
         essai++;// Le joueur perd un essai
+        break;
       }
     }
+    return 0;
   }
   if (essai == 3)
   {
