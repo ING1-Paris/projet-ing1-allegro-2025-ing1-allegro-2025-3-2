@@ -34,10 +34,7 @@ int login(t_joueur *joueur,BITMAP *background,char *name)
           //Le pseudo existes.
           return joueur->user;
         }
-        else
-        {
-          essai++;// Le joueur perd un essai
-        }
+        essai++;// Le joueur perd un essai
         break;
       }
       default:
