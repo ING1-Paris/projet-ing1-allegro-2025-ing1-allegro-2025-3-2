@@ -18,7 +18,7 @@ int signin(t_joueur *joueur,BITMAP*background)
     strcpy(name,"user"); // On affecte "user" au tableau name
     *joueur->user == ecrire_texte(joueur,name); //Equivalent du scanf mais en allegro : saisie du pseudo
     rest(30000); // 30 secondes
-    strcpy(texte,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
+
     effacer_texte(background,texte);// On efface la question
     strcpy(texte,joueur->user);
     effacer_texte(background,texte);// On efface le pseudo
