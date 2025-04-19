@@ -5,6 +5,8 @@
 #define LONGUEUR_MAX_PSEUDO 21
 #define NOMBRE_MAX_PSEUDOS 100
 #include <allegro.h>
+#include <stdbool.h>
+
 /*STRUCTURE DES INFORMATIONS ASSOCIEES AU JOUEUR*/
 typedef struct joueur{
     char user[20];
@@ -19,7 +21,7 @@ int login(t_joueur *joueur,BITMAP*background,char *name);
 char charge_joueur(t_joueur *joueur);
 
 /* PROTOTYPES DE LA FONCTION DE LECTURE*/
-char verifie_joueur(t_joueur *joueur,char *name);
+bool verifie_joueur(t_joueur *joueur,char *name);
 
 /* PROTOTYPES DES FONCTIONS DE TEXTE*/
 char effacer_texte(BITMAP*background,char *texte);
