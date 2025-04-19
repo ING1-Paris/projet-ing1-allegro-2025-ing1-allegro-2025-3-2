@@ -23,12 +23,12 @@ bool verifie_joueur(t_joueur *joueur, char *name)
             if (strstr(Joueurs,joueur->user) != NULL)
             {
                 //le pseudo existes
-                return true; // On renvoie true si le pseudo existe
+                return true;
             }
             else
             {
                 //le pseudo n'existe pas
-                return false; // On renvoie false si le pseudo n'existe pas
+                return false;
             }
         }
     }
@@ -43,16 +43,16 @@ bool verifie_joueur(t_joueur *joueur, char *name)
             if (strstr(Joueurs,joueur->user) != NULL)
             {
                 //le pseudo existes
-                return true; // On renvoie true si le pseudo existe
+                return true;
             }
             else
             {
                 //le pseudo n'existe pas
-                return false; // On renvoie false si le pseudo n'existe pas
+                return false;
             }
         }
     }
     fclose(Joueurs);
     Joueurs = NULL;
-    return 0;
+    return true; //par défaut, on retourne true
 }
