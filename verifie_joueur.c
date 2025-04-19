@@ -8,7 +8,7 @@ bool verifie_joueur(t_joueur *joueur, char *name)
 {
 
     /* OUVERTURE DU FICHIER EN MODE LECTURE*/
-    FILE* Joueurs = fopen("C:\\HORTENSE GALTIER\\2024-2025 ING1 ECE\\INFORMATIQUE\\PROJET INFO 2\\joueur.txt", "r");
+    FILE* Joueurs = fopen("C:\\Users\\galti\\CLionProjects\\ece type\\joueur", "r");
     if (Joueurs == NULL)
     { // Erreur d'ouverture de fichier
         printf("Erreur d'ouverture de fichier");

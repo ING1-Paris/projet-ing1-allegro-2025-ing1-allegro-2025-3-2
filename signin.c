@@ -36,7 +36,8 @@ int signin(t_joueur *joueur,BITMAP*background)
                 {
                     case KEY_ENTER:
                     {
-                        //C'est bien lui : on le rediriges vers la page d'accueil
+                        //C'est bien lui : on le rediriges vers login
+                        login(joueur,background,name);
                         break;
                     }
                     default:
@@ -78,7 +79,8 @@ int signin(t_joueur *joueur,BITMAP*background)
             rest(10000); // 10 secondes
             strcpy(texte,"signin reussi !.\n");
             effacer_texte(background,texte);
-            // On revient au menu principal
+            // Le joueur peut à présent se connecter
+            login(joueur,background,name);
             break;
         }
         default:
