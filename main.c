@@ -14,11 +14,11 @@ int main()
         allegro_exit();
         exit(EXIT_FAILURE);
     }
-    if (key[KEY_ESC]) {
-        login(joueur,background,name);
+    if (key[KEY_ENTER]) {
+        signin(joueur,background);
     }
     else {
-        signin(joueur,background);
+        login(joueur,background,name);
     }
 }END_OF_MAIN();
 
