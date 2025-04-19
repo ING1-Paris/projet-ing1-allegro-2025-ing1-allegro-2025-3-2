@@ -64,12 +64,13 @@ int login(t_joueur *joueur,BITMAP *background,char *name)
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Saisissez votre mot de passe:\n");
     strcpy(name,"mdp");
     *joueur->mdp == ecrire_texte(joueur,name); // Equivalent du scanf mais en allegro : saisie du mot de passe
+    rest(30000); // 30 secondes
+    strcpy(texte,"Saisissez votre mot de passe:\n");
+    effacer_texte(background,texte);// On efface la question
+    strcpy(texte,joueur->mdp);
+    effacer_texte(background,texte);// : on efface le mot de passe
     switch (readkey()>>8)
     {
-      strcpy(texte,"Saisissez votre mot de passe:\n");
-      effacer_texte(background,texte);// On efface la question
-      strcpy(texte,joueur->mdp);
-      effacer_texte(background,texte);// : on efface le mot de passe
       case KEY_ENTER:
       {
         /* ON VERIFIE QUE LE MOT DE PASSE ENTRE CORRESPOND A CELUI ATTENDU*/
