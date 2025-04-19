@@ -17,12 +17,14 @@ int signin(t_joueur *joueur,BITMAP*background)
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
     strcpy(name,"user"); // On affecte "user" au tableau name
     *joueur->user == ecrire_texte(joueur,name); //Equivalent du scanf mais en allegro : saisie du pseudo
+    rest(30000); // 30 secondes
+    strcpy(texte,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
+    effacer_texte(background,texte);// On efface la question
+    strcpy(texte,joueur->user);
+    effacer_texte(background,texte);// On efface le pseudo
+
     switch (readkey() >> 8)
     {
-        strcpy(texte,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
-        effacer_texte(background,texte); //on efface la question
-        strcpy(texte,joueur->user);//On affecte joueur->user au tableau texte
-        effacer_texte(background,texte);// On efface le pseudo
         case KEY_ENTER: // Le joueur a validé son choix
         {
             if(verifie_joueur) // fonction vérifiant l'existence du pseudo
@@ -46,11 +48,7 @@ int signin(t_joueur *joueur,BITMAP*background)
                     }
                 }
             }
-            else
-            {
-                //Le pseudo n'existes pas : on peut sortir de la boucle pour choisir le mdp
-                return 0;
-            }
+            // Sinon, le pseudo n'existes pas : on peut passer au mot de passe
             break;
         }
         default:
@@ -66,14 +64,14 @@ int signin(t_joueur *joueur,BITMAP*background)
     textprintf_centre_ex(screen,font, x,y,couleur_texte,-1,"Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
     // On saisit le mot de passe
     strcpy(name,"mdp");
-    // équivalent du scanf mais en allegro
-    *joueur->mdp == ecrire_texte(joueur,name); // saisie du mot de passe
+    *joueur->mdp == ecrire_texte(joueur,name); // équivalent du scanf mais en allegro : saisie du mot de passe
+    rest(30000); // 30 secondes
+    strcpy(texte,"Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
+    effacer_texte(background,texte);// On efface la question
+    strcpy(texte,joueur->mdp);
+    effacer_texte(background,texte);// On efface le mot de passe
     switch (readkey() >> 8)
     {
-        strcpy(texte,"Choisissez a present un mot de passe a 1-12 caracteres[ENTER]\n");
-        effacer_texte(background,texte);// On efface la question
-        strcpy(texte,joueur->mdp);
-        effacer_texte(background,texte);// On efface le mot de passe
         case KEY_ENTER:
         {
             charge_joueur(joueur);//On peut enregistrer le pseudo & le mot de passe
