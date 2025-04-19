@@ -24,16 +24,10 @@ char ecrire_texte(t_joueur *joueur,char *name) {
                     joueur->user[i] = key[readkey()>>8];
                     //On l'affiche avec textout
                     textout_centre_ex(screen,font,joueur->user,x,y+20,couleur_texte,-1);
-                    //On met à jour i
-                    i++;
-                }
-                else
-                {
-                    // On met à jour i
-                    i++;
                 }
             }
         }
+        textout_centre_ex(screen,font,joueur->user,x,y+20,couleur_texte,-1); // On affiche tout le pseudo
         return joueur->user;
     }
 
@@ -51,16 +45,10 @@ char ecrire_texte(t_joueur *joueur,char *name) {
                     joueur->mdp[i] = key[readkey()>>8];
                     //On l'affiche avec textout
                     textout_centre_ex(screen,font,joueur->mdp,x,y+20,couleur_texte,-1);
-                    //On met à jour i
-                    i++;
-                }
-                else
-                {
-                    //Quoi qu'il arrive, on met à jour i
-                    i++;
                 }
             }
         }
+        textout_centre_ex(screen,font,joueur->mdp,x,y+20,couleur_texte,-1); // On affiche tout le mot de passe
         return joueur->mdp;
     }
     if (strcmp(name,"user") != 0 && strcmp(name,"mdp") != 0)
