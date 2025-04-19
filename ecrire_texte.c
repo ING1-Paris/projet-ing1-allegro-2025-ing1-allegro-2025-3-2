@@ -14,11 +14,32 @@ char ecrire_texte(t_joueur *joueur,char *name) {
     printf("%s\n",name);
     if (strcmp(name,"user") == 0)
     {
-        for (int i=0;i<20;i++)
+        printf("On a choisi user\n");
+        for (int i=0;i<20;i++) {
+            printf("test1\n");
+            readkey();//Retourne la touche appuyée
+            printf("test2\n");
+            if ((readkey()>>8) >= KEY_A && (readkey()>>8) <= KEY_Z)
+            { // si le scancode de la touche appuyée est entre A et Z : on l'ajoute à joueur->user[i]
+                printf("test3\n");
+                joueur->user[i] = key[readkey()>>8]; // PROBLEME DANS LA LECTURE DE LA TOUCHE
+                printf("%s\n",joueur->user);
+                //On l'affiche avec textout
+                textout_centre_ex(screen,font,joueur->user,x,y+20,couleur_texte,1);
+            }
+            if (key[KEY_ENTER])
+            {
+                return joueur->user;
+            }
+        }
+        /*for (int i=0;i<20;i++)
         { // On fixe une limite de caractères pour le pseudo
+            printf("limite de caracteres\n");
             while (!key[KEY_ENTER])
             {// On ne s'arrête que quand le joueur appuie sur la touche ENTER
+                printf("test\n");
                 readkey();//Retourne la touche appuyée
+                printf("test2\n");
                 if ((readkey()>>8) >= KEY_A && (readkey()>>8) <= KEY_Z)
                 { // si le scancode de la touche appuyée est entre A et Z : on l'ajoute à joueur->user[i]
                     joueur->user[i] = key[readkey()>>8];
@@ -26,7 +47,7 @@ char ecrire_texte(t_joueur *joueur,char *name) {
                     textout_centre_ex(screen,font,joueur->user,x,y+20,couleur_texte,-1);
                 }
             }
-        }
+        }*/
         textout_centre_ex(screen,font,joueur->user,x,y+20,couleur_texte,-1); // On affiche tout le pseudo
         return joueur->user;
     }
