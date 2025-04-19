@@ -1,9 +1,10 @@
 // Created by galti on 17/04/2025.
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "signin.h"
-char verifie_joueur(t_joueur *joueur, char *name)
+bool verifie_joueur(t_joueur *joueur, char *name)
 {
 
     /* OUVERTURE DU FICHIER EN MODE LECTURE*/
@@ -14,7 +15,7 @@ char verifie_joueur(t_joueur *joueur, char *name)
         exit(1);
     }
 
-    if (&name[5] == "user")
+    if (strcmp(name,"user") == 0)
     {
         while (fscanf(Joueurs, "%s", joueur->user) != EOF)
         {
@@ -22,17 +23,19 @@ char verifie_joueur(t_joueur *joueur, char *name)
             if (strstr(Joueurs,joueur->user) != NULL)
             {
                 //le pseudo existes
+                return true; // On renvoie true si le pseudo existe
             }
             else
             {
                 //le pseudo n'existe pas
+                return false; // On renvoie false si le pseudo n'existe pas
             }
         }
     }
 
     /* SAISIE DU MOT DE PASSE*/
 
-    if (&name[5] == "mdp")
+    if (strcmp(name,"mdp") == 0)
     {
         while (fscanf(Joueurs, "%s", joueur->mdp) != EOF)
         {
@@ -40,10 +43,12 @@ char verifie_joueur(t_joueur *joueur, char *name)
             if (strstr(Joueurs,joueur->user) != NULL)
             {
                 //le pseudo existes
+                return true; // On renvoie true si le pseudo existe
             }
             else
             {
                 //le pseudo n'existe pas
+                return false; // On renvoie false si le pseudo n'existe pas
             }
         }
     }
