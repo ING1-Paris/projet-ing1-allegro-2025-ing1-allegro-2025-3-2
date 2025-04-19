@@ -11,7 +11,7 @@ int signin(t_joueur *joueur,BITMAP*background)
     int x = SCREEN_W/2; // abscisses du texte
     int y = SCREEN_H/2; // ordonnées du texte
     char name[10]; // indicateur de saisie
-    char texte[100];
+    char texte[100];//Tableau contenant le texte à effacer
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
