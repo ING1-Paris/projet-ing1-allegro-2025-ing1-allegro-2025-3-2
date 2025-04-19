@@ -15,11 +15,8 @@ int signin(t_joueur *joueur,BITMAP*background)
 
     /* CHOIX ET VALIDATION DU PSEUDO*/
     textprintf_centre_ex(screen,font,x,y,couleur_texte,-1,"Choisissez un pseudo de 1-20 caracteres[ENTER]:\n");
-    printf("affichage de la question.\n");
     strcpy(name,"user"); // On affecte "user" au tableau name
-    printf("On a affecte user au tableau name.\n");
     *joueur->user == ecrire_texte(joueur,name); //Equivalent du scanf mais en allegro : saisie du pseudo
-    printf("user = %s\n",joueur->user);
     rest(30000); // 30 secondes
     effacer_texte(background,texte);// On efface la question
     strcpy(texte,joueur->user);

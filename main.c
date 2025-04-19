@@ -29,7 +29,6 @@ int main()
         {
             case KEY_ENTER:
             {
-                printf("On va dans signin.\n");
                 signin(joueur,background);
                 free(joueur);
                 break;
