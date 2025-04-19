@@ -11,19 +11,17 @@ char ecrire_texte(t_joueur *joueur,char *name) {
     int y = SCREEN_H/2; // ordonnées du début du texte
 
     /* SAISIE DU PSEUDO*/
-    printf("%s\n",name);
     if (strcmp(name,"user") == 0)
     {
-        printf("On a choisi user\n");
         for (int i=0;i<20;i++) {
             printf("test1\n");
             readkey();//Retourne la touche appuyée
             printf("test2\n");
             if ((readkey()>>8) >= KEY_A && (readkey()>>8) <= KEY_Z)
             { // si le scancode de la touche appuyée est entre A et Z : on l'ajoute à joueur->user[i]
-                printf("test3\n");
                 joueur->user[i] = key[readkey()>>8]; // PROBLEME DANS LA LECTURE DE LA TOUCHE
-                printf("%s\n",joueur->user);
+                printf("test4\n");
+                printf("%c\n",joueur->user[i]);
                 //On l'affiche avec textout
                 textout_centre_ex(screen,font,joueur->user,x,y+20,couleur_texte,1);
             }
