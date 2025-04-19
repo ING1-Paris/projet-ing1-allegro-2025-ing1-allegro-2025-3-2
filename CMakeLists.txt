@@ -9,5 +9,6 @@ add_executable(_ece_type main.c
         charge_joueur.c
         verifie_joueur.c
         login.c
-        signin.h)
+        signin.h
+        signin.c)
 target_link_libraries(${PROJECT_NAME} -lmingw32 -lalleg44)
