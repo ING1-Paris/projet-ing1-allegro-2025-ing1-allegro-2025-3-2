@@ -11,7 +11,7 @@ char ecrire_texte(t_joueur *joueur,char *name) {
     int y = SCREEN_H/2; // ordonnées du début du texte
 
     /* SAISIE DU PSEUDO*/
-
+    printf("%s\n",name);
     if (strcmp(name,"user") == 0)
     {
         for (int i=0;i<20;i++)

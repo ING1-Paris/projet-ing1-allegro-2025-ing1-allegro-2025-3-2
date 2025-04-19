@@ -4,22 +4,46 @@
 void initialisation_allegro();
 int main()
 {
-    BITMAP*background = load_bitmap("C:\\HORTENSE GALTIER\\2024-2025 ING1 ECE\\INFORMATIQUE\\SEMESTRE 2\\COURS 4 ALLEGRO\\galaxie-andromede.bmp",NULL);
     t_joueur *joueur;
     char name[5];
     initialisation_allegro();
+    BITMAP*background = load_bitmap("C:\\HORTENSE GALTIER\\2024-2025 ING1 ECE\\INFORMATIQUE\\SEMESTRE 2\\COURS 4 ALLEGRO\\galaxie-andromede.bmp",NULL);
     if (!background)
     {
         allegro_message("pas pu trouver/charger mon_image.bmp");
         allegro_exit();
         exit(EXIT_FAILURE);
     }
-    if (key[KEY_ENTER]) {
-        signin(joueur,background);
+    joueur = malloc(sizeof(t_joueur));
+    if (!joueur)
+    {
+        allegro_message("pas pu allouer de la memoire");
+        allegro_exit();
+        exit(EXIT_FAILURE);
     }
-    else {
-        login(joueur,background,name);
+    blit(background,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+    readkey();
+    while (!key[KEY_ESC])
+    {
+        switch (readkey() >> 8)
+        {
+            case KEY_ENTER:
+            {
+                printf("On va dans signin.\n");
+                signin(joueur,background);
+                free(joueur);
+                break;
+            }
+            default: {
+                login(joueur,background,name);
+                free(joueur);
+                break;
+            }
+        }
     }
+    allegro_exit();
+    return 0;
+
 }END_OF_MAIN();
 
 void initialisation_allegro() {
