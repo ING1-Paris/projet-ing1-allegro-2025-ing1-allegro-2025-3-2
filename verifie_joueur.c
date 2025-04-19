@@ -20,7 +20,7 @@ bool verifie_joueur(t_joueur *joueur, char *name)
         while (fscanf(Joueurs, "%s", joueur->user) != EOF)
         {
             //On vérifie si le pseudo du joueur existe
-            if (strstr(Joueurs,joueur->user) != NULL)
+            if (strcmp(fgets(joueur->user,1,Joueurs),joueur->user)== 0)
             {
                 //le pseudo existes
                 return true;
@@ -35,19 +35,19 @@ bool verifie_joueur(t_joueur *joueur, char *name)
 
     /* SAISIE DU MOT DE PASSE*/
 
-    if (strcmp(name,"mdp") == 0)
+    if (strcmp(name,"mdp") == 0) //Si le mot de passe existes, on vérifie s'il est bien associé au pseudo entré
     {
         while (fscanf(Joueurs, "%s", joueur->mdp) != EOF)
         {
             //On vérifie si le pseudo du joueur existe
-            if (strstr(Joueurs,joueur->user) != NULL)
+            if (strcmp(fgets(joueur->mdp,1,Joueurs),joueur->mdp)== 0)
             {
-                //le pseudo existes
+                //le mot de passe  existes
                 return true;
             }
             else
             {
-                //le pseudo n'existe pas
+                //le mot de passe n'existe pas
                 return false;
             }
         }
