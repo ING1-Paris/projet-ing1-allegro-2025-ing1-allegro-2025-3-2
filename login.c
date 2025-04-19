@@ -52,8 +52,7 @@ int login(t_joueur *joueur,BITMAP *background,char *name)
     rest(30000); // On attend 30 secondes
     strcpy(texte,"Attendre 30 secondes avant de recommencer.\n");
     effacer_texte(background,texte);//On efface le texte précédent
-    login(joueur,background,name);//On revient au début du programme
-    return 1;
+    return login(joueur,background,name);//On revient au début du programme
   }
 
   for (essai=0;essai<3;essai++)
@@ -104,8 +103,7 @@ int login(t_joueur *joueur,BITMAP *background,char *name)
     rest(30000); // On attend 30 secondes
     strcpy(texte,"Attendre 30 secondes avant de recommencer.\n");
     effacer_texte(background,texte);//On efface le texte précédent
-    login(joueur,background,name);//On revient au début du programme
-    return 1;
+    return login(joueur,background,name);//On revient au début du programme
   }
   return 0;
 }
